@@ -1,4 +1,3 @@
-# Data simulasi untuk menyimpan akun
 akun = {}
 
 
@@ -14,12 +13,12 @@ def login():
         print("Login gagal! Username atau password salah.")
 
 def register():
-    print("\n=== Halaman Register ===")
+    print("=== Halaman Register ===")
     username = input("Masukkan username baru: ")
     
     if username in akun:
         print("Username sudah digunakan, silakan coba lagi.")
-        return  # Keluar dari fungsi register jika username sudah ada
+        return 
     password = input("Masukkan password: ")
     kode = input("Masukkan kode referal: ")
 
@@ -31,7 +30,7 @@ def register():
 
 def main():
     while True:
-        print("\n=== Pilihan Menu ===")
+        print("=== Pilihan Menu ===")
         print("a. Login")
         print("b. Register")
         pilihan = input("Pilih (a/b): ").lower()
@@ -43,5 +42,4 @@ def main():
         else:
             print("Pilihan tidak valid, silakan pilih 'a' atau 'b'.")
 
-# Memulai program utama
 main()
