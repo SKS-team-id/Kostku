@@ -1,32 +1,53 @@
-akun = {}
+import json
+import os
 
+file_path= "users.json"
+
+def load_users(file_path):
+    if os.path.exists(file_path):
+        with open(file_path, "r") as file:
+            return json.load(file)
+    return [] 
+
+def save_users(users):
+    with open(file_path, "w") as file:
+        json.dump(users, file, indent=4)
 
 def login():
     print("=== Halaman Login ===")
-    username = input("Masukkan username: ")
+    useri = input("Masukkan username: ")
     password = input("Masukkan password: ")
+    users = load_users(file_path)
     
-    if username in akun and akun[username]['password'] == password:
-        print("Login berhasil! Selamat datang di aplikasi Kostku!")
-        return username
-    else:
-        print("Login gagal! Username atau password salah.")
+    for user in users: 
+        if user ['username'] == useri and user ['password'] == password:
+            print("Login berhasil! Selamat datang di aplikasi Kostku!")
+        return user
+    
+    print("Login gagal! Username atau password salah.")
+    
 
 def register():
     print("=== Halaman Register ===")
     username = input("Masukkan username baru: ")
+    users = load_users(file_path)
     
-    if username in akun:
+    if username in users:
         print("Username sudah digunakan, silakan coba lagi.")
         return 
     password = input("Masukkan password: ")
-    kode = input("Masukkan kode referal: ")
+    kode = input("Masukkan kode referral: ")
 
     if kode == "kostku1" :
-        akun[username] = {'password': password}
+        new_user = {
+        "username": username,
+        "password": password
+    }
+        users.append(new_user)
+        save_users(users)
         print("Registrasi berhasil! Silakan login.")
     else : 
-        print("Kode referal salah, silakan coba lagi.")
+        print("Kode referral salah, silakan coba lagi.")
 
 def main():
     while True:
