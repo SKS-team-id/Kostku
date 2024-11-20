@@ -2,7 +2,7 @@
 # Data awal: 10 kamar kosong
 data_kamar = [
     {"id": f"00{i}", "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong"}
-    for i in range(1, 11)
+    for i in range(1, 41)
 ]
 
 def tampilkan_menu():
