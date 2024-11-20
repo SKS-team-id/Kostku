@@ -21,7 +21,7 @@ def login():
     
     for user in users: 
         if user ['username'] == username and user ['password'] == password:
-            print("Login berhasil! Selamat datang di aplikasi Kostku", ",", username, "!")
+            print("Login berhasil! Selamat datang di aplikasi Kostku,", username, "!")
             return username
     
     print("Login gagal! Username atau password salah.")
