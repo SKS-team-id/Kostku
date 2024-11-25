@@ -1,5 +1,5 @@
 data_kamar = [
-    {"id": f"00{i}", "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong", "fasilitas": []}
+    {"id": f"{i:03}", "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong", "fasilitas": []}
     for i in range(1, 41)
 ]
 
@@ -18,11 +18,12 @@ def tampilkan_menu_penyewa():
 
 def tambah_kamar():
     print("\n--- Tambah Kamar ---")
-    kamar_baru = input("Masukkan ID kamar baru (contoh: 011): ")
+    kamar_baru = input("Masukkan Nomor kamar baru (contoh: 001): ")
     if any(k["id"] == kamar_baru for k in data_kamar):
-        print("ID kamar sudah ada.")
+        print("Nomor kamar sudah ada.")
     else:
         data_kamar.append({"id": kamar_baru, "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong", "fasilitas": []})
+        data_kamar.sort(key=lambda x: int(x['id']))
         print(f"Kamar {kamar_baru} berhasil ditambahkan.")
 
 def hapus_kamar():
@@ -138,9 +139,7 @@ def kelola_fasilitas_kamar(kamar):
 def lihat_data_kamar_penyewa():
     print("\n--- Data Kamar ---")
     for kamar in data_kamar:
-        print(f"Kamar {kamar['id']} - Status: {kamar['status']}")
-        print(f"Harga: Rp{kamar['harga']:,}")
-        print(f"Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada fasilitas'}")
+        print(f"Kamar {kamar['id']:<5} | Status: {kamar['status']:<10} | Harga: Rp{kamar['harga']:<10} | Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada'}")
 
 def pilih_kamar_penyewa():
     print("\n--- Pilih Kamar ---")
