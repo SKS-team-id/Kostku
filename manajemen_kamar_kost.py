@@ -57,7 +57,10 @@ def data_kamar_menu():
                 if pilihan == "1":                    
                     input_data_kamar(kamar)
                 elif pilihan == "2":
-                    edit_data_kamar(kamar)
+                    if kamar["status"] == "Terisi":  # Cek status kamar sebelum edit
+                        edit_data_kamar(kamar)
+                    else:
+                        print("Kamar belum terisi. Edit data hanya bisa dilakukan jika kamar terisi.")
                 elif pilihan == "3":
                     lihat_data_kamar(kamar)
                 elif pilihan == "4":
