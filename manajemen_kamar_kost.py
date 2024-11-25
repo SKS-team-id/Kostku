@@ -1,4 +1,3 @@
-# Data awal: 10 kamar kosong
 data_kamar = [
     {"id": f"00{i}", "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong", "fasilitas": []}
     for i in range(1, 41)
@@ -14,7 +13,8 @@ def tampilkan_menu_pengelola():
 def tampilkan_menu_penyewa():
     print("\n--- Menu Penyewa ---")
     print("1. Lihat Data Kamar")
-    print("2. Keluar")
+    print("2. Pilih Kamar")
+    print("3. Keluar")
 
 def tambah_kamar():
     print("\n--- Tambah Kamar ---")
@@ -65,7 +65,7 @@ def data_kamar_menu():
                 elif pilihan == "4":
                     kelola_fasilitas_kamar(kamar)
                 elif pilihan == "5":
-                    return  # Kembali ke daftar kamar
+                    return
                 else:
                     print("Pilihan tidak valid.")
             return
@@ -144,6 +144,22 @@ def lihat_data_kamar_penyewa():
         print(f"Kamar {kamar['id']} - Status: {kamar['status']}")
         print(f"Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada fasilitas'}")
 
+def pilih_kamar_penyewa():
+    print("\n--- Pilih Kamar ---")
+    for kamar in data_kamar:
+        print(f"Kamar {kamar['id']} - Status: {kamar['status']}")
+    kamar_id = input("Masukkan ID kamar yang ingin dipilih: ")
+    
+    for kamar in data_kamar:
+        if kamar["id"] == kamar_id:
+            if kamar["status"] == "Kosong":
+                kamar["status"] = "Dipilih"
+                print(f"Kamar {kamar_id} berhasil dipilih. Silakan melanjutkan proses dengan pengelola.")
+            else:
+                print("Maaf, kamar ini sudah terisi atau dipilih.")
+            return
+    print("Kamar tidak ditemukan.")
+
 # Program utama
 while True:
     print("\n--- Sistem Manajemen Kost ---")
@@ -173,12 +189,14 @@ while True:
             if pilihan == "1":
                 lihat_data_kamar_penyewa()
             elif pilihan == "2":
+                pilih_kamar_penyewa()
+            elif pilihan == "3":
                 print("Keluar dari mode penyewa.")
                 break
             else:
                 print("Pilihan tidak valid.")
     elif role == "3":
-        print("Keluar dari program.")
+        print("Program berakhir. Terima kasih!")
         break
     else:
-        print("Pilihan tidak valid.")
+        print("Role tidak valid.")
