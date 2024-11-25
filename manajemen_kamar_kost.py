@@ -139,6 +139,7 @@ def lihat_data_kamar_penyewa():
     print("\n--- Data Kamar ---")
     for kamar in data_kamar:
         print(f"Kamar {kamar['id']} - Status: {kamar['status']}")
+        print(f"Harga: Rp{kamar['harga']:,}")
         print(f"Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada fasilitas'}")
 
 def pilih_kamar_penyewa():
