@@ -1,7 +1,6 @@
-# Program Manajemen Kamar Kost
 # Data awal: 10 kamar kosong
 data_kamar = [
-    {"id": f"00{i}", "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong"}
+    {"id": f"00{i}", "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong", "fasilitas": []}
     for i in range(1, 41)
 ]
 
@@ -23,7 +22,7 @@ def tambah_kamar():
     if any(k["id"] == kamar_baru for k in data_kamar):
         print("ID kamar sudah ada.")
     else:
-        data_kamar.append({"id": kamar_baru, "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong"})
+        data_kamar.append({"id": kamar_baru, "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong", "fasilitas": []})
         print(f"Kamar {kamar_baru} berhasil ditambahkan.")
 
 def hapus_kamar():
@@ -51,7 +50,8 @@ def data_kamar_menu():
                 print("1. Input Data Kamar")
                 print("2. Edit Data Kamar")
                 print("3. Lihat Data Kamar")
-                print("4. Kembali")
+                print("4. Kelola Fasilitas")
+                print("5. Kembali")
                 pilihan = input("Pilih menu: ")
                 if pilihan == "1":
                     if kamar["status"] == "Kosong":
@@ -59,13 +59,12 @@ def data_kamar_menu():
                     else:
                         print("Data sudah tersedia, silakan lakukan edit data kamar.")
                 elif pilihan == "2":
-                    if kamar["status"] == "Kosong":
-                        print("Data kamar masih kosong, tidak bisa melakukan modifikasi.")
-                    else:
-                        edit_data_kamar(kamar)
+                    edit_data_kamar(kamar)
                 elif pilihan == "3":
                     lihat_data_kamar(kamar)
                 elif pilihan == "4":
+                    kelola_fasilitas_kamar(kamar)
+                elif pilihan == "5":
                     return  # Kembali ke daftar kamar
                 else:
                     print("Pilihan tidak valid.")
@@ -108,24 +107,42 @@ def edit_data_kamar(kamar):
     print(f"Data kamar {kamar['id']} berhasil diperbarui.")
 
 def lihat_data_kamar(kamar):
-    if kamar["status"] == "Kosong":
-        print("Data kamar masih kosong, silakan lakukan input data kamar terlebih dahulu.")
+    print(f"\n--- Detail Kamar {kamar['id']} ---")
+    print(f"Penyewa: {kamar['penyewa']}")
+    print(f"Telepon: {kamar['telepon']}")
+    print(f"Alamat: {kamar['alamat']}")
+    print(f"Harga: {kamar['harga']}")
+    print(f"Status: {kamar['status']}")
+    print(f"Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada fasilitas'}")
+
+def kelola_fasilitas_kamar(kamar):
+    print(f"\n--- Kelola Fasilitas Kamar {kamar['id']} ---")
+    print("Fasilitas saat ini:", ", ".join(kamar["fasilitas"]) if kamar["fasilitas"] else "Belum ada fasilitas")
+    print("1. Tambah Fasilitas")
+    print("2. Hapus Fasilitas")
+    print("3. Kembali")
+    pilihan = input("Pilih menu: ")
+    if pilihan == "1":
+        fasilitas_baru = input("Masukkan fasilitas baru (pisahkan dengan koma untuk lebih dari satu): ").split(", ")
+        kamar["fasilitas"].extend(fasilitas_baru)
+        print("Fasilitas berhasil ditambahkan.")
+    elif pilihan == "2":
+        fasilitas_hapus = input("Masukkan fasilitas yang ingin dihapus: ")
+        if fasilitas_hapus in kamar["fasilitas"]:
+            kamar["fasilitas"].remove(fasilitas_hapus)
+            print("Fasilitas berhasil dihapus.")
+        else:
+            print("Fasilitas tidak ditemukan.")
+    elif pilihan == "3":
+        return
     else:
-        print(f"\n--- Detail Kamar {kamar['id']} ---")
-        print(f"Penyewa: {kamar['penyewa']}")
-        print(f"Telepon: {kamar['telepon']}")
-        print(f"Alamat: {kamar['alamat']}")
-        print(f"Harga: {kamar['harga']}")
-        print(f"Status: {kamar['status']}")
+        print("Pilihan tidak valid.")
 
 def lihat_data_kamar_penyewa():
     print("\n--- Data Kamar ---")
-    if not data_kamar:
-        print("Tidak ada data kamar yang tersedia.")
-        return
     for kamar in data_kamar:
         print(f"Kamar {kamar['id']} - Status: {kamar['status']}")
-
+        print(f"Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada fasilitas'}")
 
 # Program utama
 while True:
