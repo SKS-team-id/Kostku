@@ -53,11 +53,8 @@ def data_kamar_menu():
                 print("4. Kelola Fasilitas")
                 print("5. Kembali")
                 pilihan = input("Pilih menu: ")
-                if pilihan == "1":
-                    if kamar["status"] == "Kosong":
-                        input_data_kamar(kamar)
-                    else:
-                        print("Data sudah tersedia, silakan lakukan edit data kamar.")
+                if pilihan == "1":                    
+                    input_data_kamar(kamar)
                 elif pilihan == "2":
                     edit_data_kamar(kamar)
                 elif pilihan == "3":
