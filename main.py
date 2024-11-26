@@ -27,7 +27,6 @@ def login():
     print("Login gagal! Username atau password salah.")
     return None
     
-
 def register():
     print("=== Halaman Register ===")
     username = input("Masukkan username baru: ")
