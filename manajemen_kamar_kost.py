@@ -1,7 +1,21 @@
-data_kamar = [
-    {"id": f"{i:03}", "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong", "fasilitas": []}
-    for i in range(1, 41)
-]
+import json
+import os
+
+def simpan_ke_json():
+    with open("data_kamar.json", "w") as file:
+        json.dump(data_kamar, file, indent=4)
+    print("Data berhasil disimpan ke file JSON.")
+
+def baca_dari_json():
+    global data_kamar
+    if os.path.exists('data_kamar.json'):
+        with open('data_kamar.json', 'r') as file:
+            return json.load(file)
+    else:
+        return []
+
+data_kamar = baca_dari_json()
+
 
 def tampilkan_menu_pengelola():
     print("\n--- Menu Pengelola Kost ---")
@@ -25,6 +39,7 @@ def tambah_kamar():
         data_kamar.append({"id": kamar_baru, "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong", "fasilitas": []})
         data_kamar.sort(key=lambda x: int(x['id']))
         print(f"Kamar {kamar_baru} berhasil ditambahkan.")
+        simpan_ke_json()
 
 def hapus_kamar():
     print("\n--- Hapus Kamar ---")
@@ -36,6 +51,7 @@ def hapus_kamar():
         if kamar["id"] == kamar_id:
             data_kamar.remove(kamar)
             print(f"Kamar {kamar_id} berhasil dihapus.")
+            simpan_ke_json()
             return
     print("Kamar tidak ditemukan.")
 
@@ -69,7 +85,7 @@ def data_kamar_menu():
                     return
                 else:
                     print("Pilihan tidak valid.")
-            return
+                return
     if kamar_id:
         print("Kamar tidak ditemukan.")
 
@@ -83,6 +99,7 @@ def input_data_kamar(kamar):
     if status == "True":
         kamar["status"] = "Terisi"
         print(f"Data kamar {kamar['id']} berhasil diinput.")
+        simpan_ke_json()
     else:
         print("Status tidak valid. Hanya bisa mengisi status dengan True.")
 
@@ -106,6 +123,7 @@ def edit_data_kamar(kamar):
     else:
         print("Status tidak valid. Status tetap seperti sebelumnya.")
     print(f"Data kamar {kamar['id']} berhasil diperbarui.")
+    simpan_ke_json()
 
 def lihat_data_kamar(kamar):
     print(f"\n--- Detail Kamar {kamar['id']} ---")
