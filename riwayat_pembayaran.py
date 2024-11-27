@@ -3,10 +3,10 @@ riwayat_pembayaran = []
 def tampilkan_menu_pembayaran():
     print("\n--- Menu Riwayat Pembayaran ---")
     print("1. Input Riwayat Pembayaran")
-    print("2. Edit Riwayat Pembayaran")
-    print("3. Hapus Riwayat Pembayaran")
+    print("2. Edit Riwayat Pembayaran Terakhir")
+    print("3. Hapus Riwayat Pembayaran Terakhir")
     print("4. Lihat Riwayat Pembayaran")
-    print("5. Kembali")
+    print("5. Keluar")
 
 def input_pembayaran():
     print("\n--- Input Riwayat Pembayaran ---")
@@ -26,29 +26,26 @@ def input_pembayaran():
     print("Riwayat pembayaran berhasil ditambahkan.")
 
 def edit_pembayaran():
-    print("\n--- Edit Riwayat Pembayaran ---")
-    no_kamar = input("Masukkan Nomor Kamar yang ingin diedit: ")
+    if not riwayat_pembayaran:
+        print("\nBelum ada riwayat pembayaran untuk diedit.")
+        return
     
-    for pembayaran in riwayat_pembayaran:
-        if pembayaran["no_kamar"] == no_kamar:
-            pembayaran["nama_penyewa"] = input(f"Nama Penyewa [{pembayaran['nama_penyewa']}]: ") or pembayaran["nama_penyewa"]
-            pembayaran["tanggal"] = input(f"Tanggal Pembayaran [{pembayaran['tanggal']}]: ") or pembayaran["tanggal"]
-            pembayaran["jumlah"] = float(input(f"Jumlah yang Dibayarkan [{pembayaran['jumlah']}]: ") or pembayaran["jumlah"])
-            pembayaran["status"] = input(f"Status Pembayaran [{pembayaran['status']}]: ").capitalize() or pembayaran["status"]
-            print("Riwayat pembayaran berhasil diperbarui.")
-            return
-    print("Data pembayaran tidak ditemukan.")
+    print("\n--- Edit Riwayat Pembayaran Terakhir ---")
+    pembayaran = riwayat_pembayaran[-1]  # Ambil data terakhir
+    pembayaran["nama_penyewa"] = input(f"Nama Penyewa [{pembayaran['nama_penyewa']}]: ") or pembayaran["nama_penyewa"]
+    pembayaran["tanggal"] = input(f"Tanggal Pembayaran [{pembayaran['tanggal']}]: ") or pembayaran["tanggal"]
+    pembayaran["jumlah"] = float(input(f"Jumlah yang Dibayarkan [{pembayaran['jumlah']}]: ") or pembayaran["jumlah"])
+    pembayaran["status"] = input(f"Status Pembayaran [{pembayaran['status']}]: ").capitalize() or pembayaran["status"]
+    print("Riwayat pembayaran berhasil diperbarui.")
 
 def hapus_pembayaran():
-    print("\n--- Hapus Riwayat Pembayaran ---")
-    no_kamar = input("Masukkan Nomor Kamar yang ingin dihapus: ")
+    if not riwayat_pembayaran:
+        print("\nBelum ada riwayat pembayaran untuk dihapus.")
+        return
     
-    for pembayaran in riwayat_pembayaran:
-        if pembayaran["no_kamar"] == no_kamar:
-            riwayat_pembayaran.remove(pembayaran)
-            print("Riwayat pembayaran berhasil dihapus.")
-            return
-    print("Data pembayaran tidak ditemukan.")
+    print("\n--- Hapus Riwayat Pembayaran Terakhir ---")
+    riwayat_pembayaran.pop()  # Hapus data terakhir
+    print("Riwayat pembayaran terakhir berhasil dihapus.")
 
 def lihat_riwayat_pembayaran():
     print("\n--- Riwayat Pembayaran ---")
@@ -64,7 +61,7 @@ def lihat_riwayat_pembayaran():
         print(f"Status: {pembayaran['status']}")
         print("-" * 30)
 
-# Program utama (contoh penggunaan)
+# Program utama
 while True:
     tampilkan_menu_pembayaran()
     pilihan = input("Pilih menu: ")
