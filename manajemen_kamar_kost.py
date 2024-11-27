@@ -145,6 +145,7 @@ def kelola_fasilitas_kamar(kamar):
         fasilitas_baru = input("Masukkan fasilitas baru (pisahkan dengan koma untuk lebih dari satu): ").split(", ")
         kamar["fasilitas"].extend(fasilitas_baru)
         print("Fasilitas berhasil ditambahkan.")
+        simpan_ke_json()
     elif pilihan == "2":
         fasilitas_hapus = input("Masukkan fasilitas yang ingin dihapus: ")
         if fasilitas_hapus in kamar["fasilitas"]:

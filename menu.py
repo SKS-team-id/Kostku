@@ -1,45 +1,83 @@
-akun = {}
+import json
+import os
 
+file_path= "users.json"
+
+def baca_users(file_path):
+    if os.path.exists(file_path):
+        with open(file_path, "r") as file:
+            return json.load(file)
+    return [] 
+
+def simpan_users(users):
+    with open(file_path, "w") as file:
+        json.dump(users, file, indent=4)
 
 def login():
     print("=== Halaman Login ===")
     username = input("Masukkan username: ")
     password = input("Masukkan password: ")
+    users = baca_users(file_path)
     
-    if username in akun and akun[username]['password'] == password:
-        print("Login berhasil! Selamat datang di aplikasi Kostku!")
-        return username
-    else:
-        print("Login gagal! Username atau password salah.")
-
+    for user in users: 
+        if user ['username'] == username and user ['password'] == password:
+            print("Login berhasil! Selamat datang di aplikasi Kostku,", username, "!")
+            return username
+    
+    print("Login gagal! Username atau password salah.")
+    return None
+    
 def register():
     print("=== Halaman Register ===")
     username = input("Masukkan username baru: ")
+    users = baca_users(file_path)
     
-    if username in akun:
-        print("Username sudah digunakan, silakan coba lagi.")
+    if any (user["username"] == username for user in users):
+        print("Username sudah digunakan, silakan coba username yang lain.")
         return 
     password = input("Masukkan password: ")
-    kode = input("Masukkan kode referal: ")
+    kode = input("Masukkan kode referral: ")
 
     if kode == "kostku1" :
-        akun[username] = {'password': password}
+        new_user = {
+        "username": username,
+        "password": password
+    }
+        users.append(new_user)
+        simpan_users(users)
         print("Registrasi berhasil! Silakan login.")
     else : 
-        print("Kode referal salah, silakan coba lagi.")
+        print("Kode referral salah, silakan coba lagi.")
+
+def logout() :
+    print("Logout berhasil! Sampai datang kembali.")
+    return None
+
 
 def main():
+    pengguna_saat_ini = None
     while True:
         print("=== Pilihan Menu ===")
-        print("a. Login")
-        print("b. Register")
-        pilihan = input("Pilih (a/b): ").lower()
+        print("1. Login")
+        print("2. Register")
+        if pengguna_saat_ini:
+            print("3. Logout")
+
+        pilihan = input("Pilih (angka menu): ").lower()
         
-        if pilihan == 'a':
-            login()
-        elif pilihan == 'b':
-            register()
+        if pilihan == '1':
+            if pengguna_saat_ini:
+                print("Anda sudah login sebagai", pengguna_saat_ini, ". Silakan logout terlebih dahulu.")
+            else:
+                pengguna_saat_ini = login()
+        elif pilihan == '2':
+            if pengguna_saat_ini:
+                    print("Anda sudah login sebagai", pengguna_saat_ini, ". Silakan logout terlebih dahulu untuk membuat akun baru.")
+            else:
+                register()
+        elif pilihan == "3" and pengguna_saat_ini:
+            pengguna_saat_ini = logout()
         else:
-            print("Pilihan tidak valid, silakan pilih 'a' atau 'b'.")
+            print("Pilihan tidak valid, silakancoba lagi.")
 
 main()
