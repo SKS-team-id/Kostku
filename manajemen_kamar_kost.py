@@ -138,23 +138,55 @@ def kelola_fasilitas_kamar(kamar):
     print(f"\n--- Kelola Fasilitas Kamar {kamar['id']} ---")
     print("Fasilitas saat ini:", ", ".join(kamar["fasilitas"]) if kamar["fasilitas"] else "Belum ada fasilitas")
     print("1. Tambah Fasilitas")
-    print("2. Hapus Fasilitas")
-    print("3. Kembali")
+    print("2. Edit Fasilitas")
+    print("3. Hapus Fasilitas")
+    print("4. Kembali")
+    
     pilihan = input("Pilih menu: ")
+    
     if pilihan == "1":
         fasilitas_baru = input("Masukkan fasilitas baru (pisahkan dengan koma untuk lebih dari satu): ").split(", ")
         kamar["fasilitas"].extend(fasilitas_baru)
         print("Fasilitas berhasil ditambahkan.")
         simpan_ke_json()
+    
     elif pilihan == "2":
-        fasilitas_hapus = input("Masukkan fasilitas yang ingin dihapus: ")
+        if not kamar["fasilitas"]:
+            print("Tidak ada fasilitas untuk diedit.")
+            return
+        
+        print("\n--- Edit Fasilitas ---")
+        for i, fasilitas in enumerate(kamar["fasilitas"], start=1):
+            print(f"{i}. {fasilitas}")
+        
+        try:
+            nomor_edit = int(input("Pilih nomor fasilitas yang ingin diedit: "))
+            if 1 <= nomor_edit <= len(kamar["fasilitas"]):
+                fasilitas_baru = input(f"Masukkan fasilitas baru untuk mengganti '{kamar['fasilitas'][nomor_edit - 1]}': ")
+                kamar["fasilitas"][nomor_edit - 1] = fasilitas_baru
+                print("Fasilitas berhasil diperbarui.")
+                simpan_ke_json()
+            else:
+                print("Nomor fasilitas tidak valid.")
+        except ValueError:
+            print("Input tidak valid. Harap masukkan angka.")
+    
+    elif pilihan == "3":
+        if not kamar["fasilitas"]:
+            print("Tidak ada fasilitas untuk dihapus.")
+            return
+        
+        fasilitas_hapus = input("Masukkan nama fasilitas yang ingin dihapus: ")
         if fasilitas_hapus in kamar["fasilitas"]:
             kamar["fasilitas"].remove(fasilitas_hapus)
             print("Fasilitas berhasil dihapus.")
+            simpan_ke_json()
         else:
             print("Fasilitas tidak ditemukan.")
-    elif pilihan == "3":
+    
+    elif pilihan == "4":
         return
+    
     else:
         print("Pilihan tidak valid.")
 
