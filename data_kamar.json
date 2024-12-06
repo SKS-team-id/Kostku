@@ -2,36 +2,42 @@
     {
         "id": "001",
         "penyewa": "nipi",
-        "telepon": "09810876017",
-        "alamat": "cibiru indah",
-        "harga": 900000,
+        "telepon": "0987654",
+        "alamat": "jl.asvgahb",
+        "harga": 90000,
         "status": "Terisi",
         "fasilitas": [
             "nipi",
             "nipi",
             "sapi"
-        ]
+        ],
+        "tanggal_mulai": "2020-10-10",
+        "tanggal_akhir": "2021-01-10"
     },
     {
         "id": "002",
-        "penyewa": "s",
-        "telepon": "09",
-        "alamat": "asa",
-        "harga": 900,
+        "penyewa": "vina",
+        "telepon": "098765",
+        "alamat": "jl.sabhas",
+        "harga": 80000,
         "status": "Terisi",
-        "fasilitas": []
+        "fasilitas": [],
+        "tanggal_mulai": "2021-03-01",
+        "tanggal_akhir": "2023-06-01"
     },
     {
         "id": "003",
-        "penyewa": "mar",
-        "telepon": "078169165",
-        "alamat": "cimahi",
-        "harga": 2000,
-        "status": "Terisi",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
         "fasilitas": [
             "mobil",
             "ayam"
-        ]
+        ],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
     },
     {
         "id": "004",
@@ -48,7 +54,7 @@
         "telepon": "",
         "alamat": "",
         "harga": 0,
-        "status": "Kosong",
+        "status": "Dipilih",
         "fasilitas": []
     }
 ]

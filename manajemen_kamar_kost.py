@@ -16,7 +16,6 @@ def baca_dari_json():
 
 data_kamar = baca_dari_json()
 
-
 def tampilkan_menu_pengelola():
     print("\n--- Menu Pengelola Kost ---")
     print("1. Tambah Kamar")
@@ -95,6 +94,8 @@ def input_data_kamar(kamar):
     kamar["telepon"] = input("Masukkan nomor telepon penyewa: ")
     kamar["alamat"] = input("Masukkan alamat penyewa: ")
     kamar["harga"] = int(input("Masukkan harga kamar: "))
+    kamar["tanggal_mulai"] = input("Masukkan tanggal mulai sewa (YYYY-MM-DD): ")
+    kamar["tanggal_akhir"] = input("Masukkan tanggal berakhir sewa (YYYY-MM-DD): ")
     status = input("Masukkan status kamar (True untuk Terisi): ").capitalize()
     if status == "True":
         kamar["status"] = "Terisi"
@@ -110,6 +111,8 @@ def edit_data_kamar(kamar):
     kamar["alamat"] = input(f"Alamat [{kamar['alamat']}]: ") or kamar["alamat"]
     kamar["harga"] = input(f"Harga kamar [{kamar['harga']}]: ")
     kamar["harga"] = int(kamar["harga"]) if kamar["harga"] else kamar["harga"]
+    kamar["tanggal_mulai"] = input(f"Tanggal Mulai Sewa [{kamar['tanggal_mulai']}]: ") or kamar["tanggal_mulai"]
+    kamar["tanggal_akhir"] = input(f"Tanggal Akhir Sewa [{kamar['tanggal_akhir']}]: ") or kamar["tanggal_akhir"]
     status = input(f"Status kamar (True untuk Terisi / False untuk Kosong) [{kamar['status']}]: ").capitalize()
     if status == "True":
         kamar["status"] = "Terisi"
@@ -119,6 +122,8 @@ def edit_data_kamar(kamar):
         kamar["telepon"] = ""
         kamar["alamat"] = ""
         kamar["harga"] = 0
+        kamar["tanggal_mulai"] = ""
+        kamar["tanggal_akhir"] = ""
         print("Data kamar telah dihapus. Kamar kembali menjadi kosong.")
     else:
         print("Status tidak valid. Status tetap seperti sebelumnya.")
@@ -126,12 +131,19 @@ def edit_data_kamar(kamar):
     simpan_ke_json()
 
 def lihat_data_kamar(kamar):
+    if kamar["status"] == "Dipilih":
+        print(f"\nKamar {kamar['id']} masih dalam status 'Dipilih' oleh penyewa.")
+        print("Belum ada data kamar. Silakan input data kamar terlebih dahulu.")
+        return
+
     print(f"\n--- Detail Kamar {kamar['id']} ---")
     print(f"Penyewa: {kamar['penyewa']}")
     print(f"Telepon: {kamar['telepon']}")
     print(f"Alamat: {kamar['alamat']}")
     print(f"Harga: {kamar['harga']}")
     print(f"Status: {kamar['status']}")
+    print(f"Tanggal Mulai Sewa: {kamar['tanggal_mulai']}")
+    print(f"Tanggal Akhir Sewa: {kamar['tanggal_akhir']}")
     print(f"Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada fasilitas'}")
 
 def kelola_fasilitas_kamar(kamar):
