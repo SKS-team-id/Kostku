@@ -11,12 +11,6 @@
             "tanggal": "2024-11-01",
             "jumlah": 1500000,
             "status": "Belum Lunas"
-        },
-        {
-            "nama_penyewa": "sas",
-            "tanggal": "1000-20-10",
-            "jumlah": 12000.0,
-            "status": "Lunas"
         }
     ],
     "102": [
@@ -27,5 +21,13 @@
             "status": "Lunas"
         }
     ],
-    "103": []
+    "103": [],
+    "001": [
+        {
+            "nama_penyewa": "nipi",
+            "tanggal": "2000-11-01",
+            "jumlah": 900000.0,
+            "status": "Lunas"
+        }
+    ]
 }
