@@ -14,11 +14,11 @@
     },
     {
         "id": "002",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Kosong",
+        "penyewa": "s",
+        "telepon": "09",
+        "alamat": "asa",
+        "harga": 900,
+        "status": "Terisi",
         "fasilitas": []
     },
     {

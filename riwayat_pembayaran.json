@@ -1,0 +1,31 @@
+{
+    "101": [
+        {
+            "nama_penyewa": "Marwa Aulia",
+            "tanggal": "2024-10-01",
+            "jumlah": 1500000,
+            "status": "Lunas"
+        },
+        {
+            "nama_penyewa": "Marwa Aulia",
+            "tanggal": "2024-11-01",
+            "jumlah": 1500000,
+            "status": "Belum Lunas"
+        },
+        {
+            "nama_penyewa": "sas",
+            "tanggal": "1000-20-10",
+            "jumlah": 12000.0,
+            "status": "Lunas"
+        }
+    ],
+    "102": [
+        {
+            "nama_penyewa": "Ahmad Lukman",
+            "tanggal": "2024-10-05",
+            "jumlah": 1200000,
+            "status": "Lunas"
+        }
+    ],
+    "103": []
+}
