@@ -47,14 +47,5 @@
         "harga": 0,
         "status": "Kosong",
         "fasilitas": []
-    },
-    {
-        "id": "005",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Dipilih",
-        "fasilitas": []
     }
 ]

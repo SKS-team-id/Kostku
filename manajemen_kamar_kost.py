@@ -27,7 +27,8 @@ def tampilkan_menu_penyewa():
     print("\n--- Menu Penyewa ---")
     print("1. Lihat Data Kamar")
     print("2. Pilih Kamar")
-    print("3. Keluar")
+    print("3. Batalkan Pilihan Kamar")
+    print("4. Keluar")
 
 def tambah_kamar():
     print("\n--- Tambah Kamar ---")
@@ -131,19 +132,14 @@ def edit_data_kamar(kamar):
     simpan_ke_json()
 
 def lihat_data_kamar(kamar):
-    if kamar["status"] == "Dipilih":
-        print(f"\nKamar {kamar['id']} masih dalam status 'Dipilih' oleh penyewa.")
-        print("Belum ada data kamar. Silakan input data kamar terlebih dahulu.")
-        return
-
     print(f"\n--- Detail Kamar {kamar['id']} ---")
-    print(f"Penyewa: {kamar['penyewa']}")
-    print(f"Telepon: {kamar['telepon']}")
-    print(f"Alamat: {kamar['alamat']}")
-    print(f"Harga: {kamar['harga']}")
+    print(f"Penyewa: {kamar['penyewa'] if kamar['penyewa'] else 'Belum ada penyewa'}")
+    print(f"Telepon: {kamar['telepon'] if kamar['telepon'] else 'Belum ada data telepon'}")
+    print(f"Alamat: {kamar['alamat'] if kamar['alamat'] else 'Belum ada data alamat'}")
+    print(f"Harga: Rp{kamar['harga'] if kamar['harga'] else 'Belum ditentukan'}")
     print(f"Status: {kamar['status']}")
-    print(f"Tanggal Mulai Sewa: {kamar['tanggal_mulai']}")
-    print(f"Tanggal Akhir Sewa: {kamar['tanggal_akhir']}")
+    print(f"Tanggal Mulai Sewa: {kamar['tanggal_mulai'] if 'tanggal_mulai' in kamar and kamar['tanggal_mulai'] else 'Belum ditentukan'}")
+    print(f"Tanggal Akhir Sewa: {kamar['tanggal_akhir'] if 'tanggal_akhir' in kamar and kamar['tanggal_akhir'] else 'Belum ditentukan'}")
     print(f"Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada fasilitas'}")
 
 def kelola_fasilitas_kamar(kamar):
@@ -209,12 +205,6 @@ def lihat_data_kamar_penyewa():
 
 def pilih_kamar_penyewa():
     print("\n--- Pilih Kamar ---")
-    # Cek apakah penyewa sudah memilih kamar sebelumnya
-    for kamar in data_kamar:
-        if kamar["status"] == "Dipilih":
-            print("Anda sudah memilih kamar. Tidak dapat memilih kamar lain.")
-            return  # Keluar dari fungsi jika sudah ada kamar yang dipilih
-    
     for kamar in data_kamar:
         print(f"Kamar {kamar['id']} - Status: {kamar['status']}")
     
@@ -224,11 +214,26 @@ def pilih_kamar_penyewa():
             if kamar["status"] == "Kosong":
                 kamar["status"] = "Dipilih"
                 print(f"Kamar {kamar_id} berhasil dipilih. Silakan melanjutkan proses dengan pengelola.")
+                simpan_ke_json()
+                return
+            elif kamar["status"] == "Dipilih":
+                print(f"Kamar {kamar_id} sudah dalam status 'Dipilih'. Anda dapat melanjutkan proses dengan pengelola.")
+                return
             else:
-                print("Maaf, kamar ini sudah terisi atau dipilih.")
-            return
+                print("Maaf, kamar ini sudah terisi.")
+                return
     print("Kamar tidak ditemukan.")
 
+def batalkan_pilihan_kamar():
+    print("\n--- Batalkan Pilihan Kamar ---")
+    kamar_id = input("Masukkan ID kamar yang ingin dibatalkan: ")
+    for kamar in data_kamar:
+        if kamar["id"] == kamar_id and kamar["status"] == "Dipilih":
+            kamar["status"] = "Kosong"
+            print(f"Pilihan kamar {kamar_id} berhasil dibatalkan.")
+            simpan_ke_json()
+            return
+    print("Kamar tidak ditemukan atau statusnya bukan 'Dipilih'.")
 
 # Program utama
 while True:
@@ -261,6 +266,8 @@ while True:
             elif pilihan == "2":
                 pilih_kamar_penyewa()
             elif pilihan == "3":
+                batalkan_pilihan_kamar()
+            elif pilihan == "4":
                 print("Keluar dari mode penyewa.")
                 break
             else:
