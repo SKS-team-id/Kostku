@@ -30,7 +30,6 @@ def login():
                 print("Anda login sebagai penyewa.")
                 tampilkan_menu_penyewa()
             return user
-    
     print("Login gagal! Username atau password salah.")
 
 def register():
@@ -43,7 +42,6 @@ def register():
         return 
     password = input("Masukkan password: ")
     kode = input("Masukkan kode referral: ")
-
     if kode == "kostku1":
         new_user = {"username": username, "password": password}
         users.append(new_user)
@@ -53,13 +51,13 @@ def register():
         print("Kode referral salah, silakan coba lagi.")
 
 def logout():
-    print("Logout berhasil! Sampai jumpa kembali.")
+    print("Logout berhasil! Sampai jumpa kembali >.<")
     return None
 
 def main():
     pengguna_saat_ini = None
     while True:
-        print("\n=== Pilihan WOY ===")
+        print("\n=== Pilihan Menu ===")
         print("1. Login")
         print("2. Register")
         if pengguna_saat_ini:

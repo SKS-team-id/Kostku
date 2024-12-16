@@ -27,17 +27,17 @@
     },
     {
         "id": "003",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Kosong",
+        "penyewa": "rijal",
+        "telepon": "008817766221",
+        "alamat": "jalan cibiru indah",
+        "harga": 700000,
+        "status": "Terisi",
         "fasilitas": [
             "mobil",
             "ayam"
         ],
-        "tanggal_mulai": "",
-        "tanggal_akhir": ""
+        "tanggal_mulai": "2024-12-12",
+        "tanggal_akhir": "2025-10-19"
     },
     {
         "id": "004",
@@ -45,7 +45,25 @@
         "telepon": "",
         "alamat": "",
         "harga": 0,
-        "status": "Kosong",
+        "status": "Dipilih",
+        "fasilitas": []
+    },
+    {
+        "id": "005",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Dipilih",
+        "fasilitas": []
+    },
+    {
+        "id": "006",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Dipilih",
         "fasilitas": []
     }
 ]
