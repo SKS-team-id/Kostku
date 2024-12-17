@@ -165,6 +165,7 @@ def lihat_data_kamar(kamar):
     print(f"Tanggal Mulai Sewa: {kamar['tanggal_mulai'] if 'tanggal_mulai' in kamar and kamar['tanggal_mulai'] else 'Belum ditentukan'}")
     print(f"Tanggal Akhir Sewa: {kamar['tanggal_akhir'] if 'tanggal_akhir' in kamar and kamar['tanggal_akhir'] else 'Belum ditentukan'}")
     print(f"Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada fasilitas'}")
+    tampilkan_menu_penyewa()
 
 def kelola_fasilitas_kamar(kamar):
     print(f"\n--- Kelola Fasilitas Kamar {kamar['id']} ---")
@@ -223,9 +224,15 @@ def kelola_fasilitas_kamar(kamar):
         print("Pilihan tidak valid.")
 
 def lihat_data_kamar_penyewa():
-    print("\n--- Data Kamar ---")
+    print("\n--- Data Kamar Kosong ---")
+    ada_kamar_kosong = False  # Flag untuk mengecek apakah ada kamar kosong
     for kamar in data_kamar:
-        print(f"Kamar {kamar['id']:<5} | Status: {kamar['status']:<10} | Harga: Rp{kamar['harga']:<10} | Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada'}")
+        if kamar['status'] == 'Kosong':  # Memeriksa apakah kamar kosong
+            ada_kamar_kosong = True
+            print(f"Kamar {kamar['id']:<5} | Status: {kamar['status']:<10} | Harga: Rp{kamar['harga']:<10} | Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada'}")
+    if not ada_kamar_kosong:
+        print("Tidak ada kamar kosong saat ini.")
+    tampilkan_menu_penyewa()
 
 def pilih_kamar_penyewa():
     print("\n--- Pilih Kamar ---")
@@ -239,12 +246,11 @@ def pilih_kamar_penyewa():
                 kamar["status"] = "Dipilih"
                 print(f"Kamar {kamar_id} berhasil dipilih. Silakan melanjutkan proses dengan pengelola.")
                 simpan_ke_json()
-                return
             elif kamar["status"] == "Dipilih":
                 print(f"Kamar {kamar_id} sudah dalam status 'Dipilih'. Anda dapat melanjutkan proses dengan pengelola.")
-                pilih_kamar_penyewa()
-            else:
+            elif kamar["status"] != "Kosong":
                 print("Maaf, kamar ini sudah terisi.")
-                pilih_kamar_penyewa()
-    print("Kamar tidak ditemukan.")
+            else:
+                print("Kamar tidak ditemukan.")
+    tampilkan_menu_penyewa()
 

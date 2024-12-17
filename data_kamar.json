@@ -65,5 +65,41 @@
         "harga": 0,
         "status": "Dipilih",
         "fasilitas": []
+    },
+    {
+        "id": "007",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
+    },
+    {
+        "id": "008",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
+    },
+    {
+        "id": "009",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
+    },
+    {
+        "id": "010",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
     }
 ]

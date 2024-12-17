@@ -23,10 +23,10 @@ def login():
     for user in users:
         if user['username'] == username and user['password'] == password:
             print(f"Login berhasil! Selamat datang, {username}!")
-            if user["username"] == "admin":
+            if user['username'] == "admin":
                 print("Anda login sebagai pengelola.")
                 tampilkan_menu_pengelola()
-            elif user["username"] != "admin":
+            elif user['username'] != "admin":
                 print("Anda login sebagai penyewa.")
                 tampilkan_menu_penyewa()
             return user
@@ -60,25 +60,11 @@ def main():
         print("\n=== Pilihan Menu ===")
         print("1. Login")
         print("2. Register")
-        if pengguna_saat_ini:
-            print("3. Logout")
         pilihan = input("Pilih (angka menu): ").strip()
         if pilihan == '1':
-            if pengguna_saat_ini:
-                print(f"Anda sudah login sebagai {pengguna_saat_ini['username']}. Silakan logout terlebih dahulu.")
-            else:
-                pengguna_saat_ini = login()
+            login()
         elif pilihan == '2':
-            if pengguna_saat_ini:
-                print(f"Anda sudah login sebagai {pengguna_saat_ini['username']}. Silakan logout terlebih dahulu.")
-            else:
-                register()
-        elif pilihan == '3' and pengguna_saat_ini:
-            pengguna_saat_ini = logout()
-        elif pilihan == '3' and not pengguna_saat_ini:
-            print("Anda belum login, silakan login terlebih dahulu.")
-        else:
-            print("Pilihan tidak valid, silakan coba lagi.")
+            register()
 
 if __name__ == "__main__":
     main()
