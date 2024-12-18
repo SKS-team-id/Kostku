@@ -5,6 +5,12 @@
             "tanggal": "2024-12-10",
             "jumlah": "900000",
             "status": "Lunas"
+        },
+        {
+            "nama_penyewa": "nipi",
+            "tanggal": "2024-08-12",
+            "jumlah": "700000",
+            "status": "Lunas"
         }
     ],
     "002": [
