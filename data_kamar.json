@@ -15,17 +15,6 @@
         "tanggal_akhir": "2021-01-10"
     },
     {
-        "id": "002",
-        "penyewa": "vina",
-        "telepon": "098765",
-        "alamat": "jl.sabhas",
-        "harga": 80000,
-        "status": "Terisi",
-        "fasilitas": [],
-        "tanggal_mulai": "2021-03-01",
-        "tanggal_akhir": "2023-06-01"
-    },
-    {
         "id": "003",
         "penyewa": "rijal",
         "telepon": "008817766221",
@@ -95,6 +84,26 @@
     },
     {
         "id": "010",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
+    },
+    {
+        "id": "011",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": [],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "022",
         "penyewa": "",
         "telepon": "",
         "alamat": "",
