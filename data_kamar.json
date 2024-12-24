@@ -62,7 +62,9 @@
         "alamat": "",
         "harga": 0,
         "status": "Kosong",
-        "fasilitas": []
+        "fasilitas": [],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
     },
     {
         "id": "008",
@@ -101,14 +103,5 @@
         "fasilitas": [],
         "tanggal_mulai": "",
         "tanggal_akhir": ""
-    },
-    {
-        "id": "022",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Kosong",
-        "fasilitas": []
     }
 ]

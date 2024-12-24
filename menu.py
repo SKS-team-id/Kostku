@@ -34,21 +34,26 @@ def login():
 
 def register():
     print("=== Halaman Register ===")
-    username = input("Masukkan username baru: ")
     users = load_users(file_path)
     
-    if any(user["username"] == username for user in users):
-        print("Username sudah digunakan, silakan coba username lain.")
-        return 
-    password = input("Masukkan password: ")
-    kode = input("Masukkan kode referral: ")
-    if kode == "kostku1":
-        new_user = {"username": username, "password": password}
-        users.append(new_user)
-        save_users(users)
-        print("Registrasi berhasil! Silakan login.")
-    else:
-        print("Kode referral salah, silakan coba lagi.")
+    while True:
+        username = input("Masukkan username baru: ")
+        if not username.isalpha():
+            print("username hanya boleh diisi huruf dan tidak kosong")
+            continue
+        if any(user["username"] == username for user in users):
+            print("Username sudah digunakan, silakan coba username lain.")
+            return 
+        password = input("Masukkan password: ")
+        kode = input("Masukkan kode referral: ")
+        if kode == "kostku1":
+            new_user = {"username": username, "password": password}
+            users.append(new_user)
+            save_users(users)
+            print("Registrasi berhasil! Silakan login.")
+            break
+        else:
+            print("Kode referral salah, silakan coba lagi.")
 
 def logout():
     print("Logout berhasil! Sampai jumpa kembali >.<")
@@ -65,6 +70,8 @@ def main():
             login()
         elif pilihan == '2':
             register()
+        else:
+            print("Pilihan tidak valid, silahkan pilih menu diatas!")
 
 if __name__ == "__main__":
     main()
