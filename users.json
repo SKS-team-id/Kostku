@@ -1,14 +1,18 @@
 [
-    {
-        "username": "admin",
-        "password": "admin1"
-    },
-    {
-        "username": "saya",
-        "password": "saya1"
-    },
-    {
-        "username": "kamu",
-        "password": "kamu1"
-    }
+  {
+    "username": "admin",
+    "password": "admin1"
+  },
+  {
+    "username": "saya",
+    "password": "saya1"
+  },
+  {
+    "username": "kamu",
+    "password": "kamu1"
+  },
+  {
+    "username": "aku",
+    "password": "aku1"
+  }
 ]
