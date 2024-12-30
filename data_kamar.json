@@ -100,7 +100,12 @@
         "alamat": "",
         "harga": 0,
         "status": "Kosong",
-        "fasilitas": [],
+        "fasilitas": [
+            "dapur",
+            "kasur",
+            "bantal",
+            "wc"
+        ],
         "tanggal_mulai": "",
         "tanggal_akhir": ""
     }
