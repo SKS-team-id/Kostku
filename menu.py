@@ -13,6 +13,29 @@ def load_users(file_path):
 def save_users(users):
     with open(file_path, "w") as file:
         json.dump(users, file, indent=4)
+def simpan_ke_json():
+    with open("data_kamar.json", "w") as file:
+        json.dump(data_kamar, file, indent=4)
+    print("Data berhasil disimpan ke file JSON.")
+    with open("data_pembayaran.json", "w") as file:
+        json.dump(data_kamar, file, indent=4)
+    print("Data berhasil disimpan ke file JSON.")
+
+def baca_dari_json():
+    global data_kamar
+    if os.path.exists('data_kamar.json'):
+        with open('data_kamar.json', 'r') as file:
+            return json.load(file)
+    else:
+        return []
+    
+    if os.path.exists("data_pembayaran.json"):
+        with open("data_pembayaran.json", "r") as f:
+            data_pembayaran = json.load(f)
+    else:
+        data_pembayaran = {}
+    
+    return data_kamar, data_pembayaran
 
 def login():
     print("=== Halaman Login ===")

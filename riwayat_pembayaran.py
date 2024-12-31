@@ -26,7 +26,7 @@ def tampilan_pembayaran_pengelola():
         pilih = input("Pilih Menu: ")
         if pilih == "1":
             input_pembayaran()
-        elif pilih == "2" :
+        elif pilih == "2":
             edit_pembayaran()
         elif pilih == "3":
             hapus_pembayaran()
@@ -39,61 +39,98 @@ def tampilan_pembayaran_pengelola():
             print("Pilihan tidak ada. Pilih menu yang ada.")
 
 def tampilan_pembayaran_penyewa():
-        while True:
-            print("\n--- Menu Penyewa ---")
-            print("1. Lihat Riwayat Pembayaran")
-            print("2. Keluar")
-            
-            pilihan = input("Pilih menu: ")
-            if pilihan == "1":
-                lihat_riwayat_pembayaran()
-            elif pilihan == "2":
-                print("Keluar dari menu penyewa.")
-                break
-            else:
-                print("Pilihan tidak valid. Silakan coba lagi.")
+    while True:
+        print("\n--- Menu Penyewa ---")
+        print("1. Lihat Riwayat Pembayaran")
+        print("2. Keluar")
+        
+        pilihan = input("Pilih menu: ")
+        if pilihan == "1":
+            lihat_riwayat_pembayaran()
+        elif pilihan == "2":
+            print("Keluar dari menu penyewa.")
+            break
+        else:
+            print("Pilihan tidak valid. Silakan coba lagi.")
 
 def input_pembayaran():
-    no_kamar = input("Nomor Kamar: ")
-
-    kamar = next((k for k in data_kamar if k["id"] == no_kamar), None)
-    if not kamar:
-        print("Kamar tidak ditemukan.")
-        return
+    print("\n=== Input Pembayaran ===")
+    print("\nDaftar Kamar Terisi:")
+    kamar_terisi = False
     
-    if no_kamar not in data_pembayaran:
-        data_pembayaran[no_kamar] = []
-
-    nama_penyewa = input("Nama Penyewa: ")
-    tanggal = input("Tanggal Pembayaran (YYYY-MM-DD): ")
-    try:
-        jumlah = (input("Jumlah yang Dibayarkan: "))
-    except ValueError:
-        print("Jumlah harus berupa angka.")
+    for kamar in data_kamar:
+        if kamar["status"] == "Terisi":
+            kamar_terisi = True
+            print(f"Kamar {kamar['id']} - Penyewa: {kamar['penyewa']} - Harga: Rp{kamar['harga']}")
+    
+    if not kamar_terisi:
+        print("Tidak ada kamar yang terisi.")
         return
-    status = input("Status Pembayaran (Lunas/Belum Lunas): ").capitalize()
+        
+    while True:
+        no_kamar = input("\nMasukkan Nomor Kamar: ")
+        kamar = next((k for k in data_kamar if k["id"] == no_kamar and k["status"] == "Terisi"), None)
+        
+        if not kamar:
+            print("Nomor kamar tidak valid atau kamar tidak terisi.")
+            continue
+            
+        # Initialize payment history for new room
+        if no_kamar not in data_pembayaran:
+            data_pembayaran[no_kamar] = []
+        
+        # Payment details
+        nama_penyewa = kamar["penyewa"]
+        tanggal = input("Tanggal Pembayaran (YYYY-MM-DD): ")
+        
+        while True:
+            try:
+                jumlah = input("Jumlah yang Dibayarkan: Rp")
+                if not jumlah.isdigit():
+                    print("Jumlah harus berupa angka.")
+                    continue
+                break
+            except ValueError:
+                print("Jumlah tidak valid.")
+                
+        while True:
+            status = input("Status Pembayaran (Lunas/Belum Lunas): ").capitalize()
+            if status in ["Lunas", "Belum Lunas"]:
+                break
+            print("Status harus 'Lunas' atau 'Belum Lunas'")
 
-    data_pembayaran[no_kamar].append({
-        "nama_penyewa": nama_penyewa,
-        "tanggal": tanggal,
-        "jumlah": jumlah,
-        "status": status
-    })
-    print(f"Riwayat pembayaran untuk kamar {no_kamar} berhasil ditambahkan.")
-    simpan_file_json("data_pembayaran.json", data_pembayaran)
+        # Add payment record
+        pembayaran_baru = {
+            "nama_penyewa": nama_penyewa,
+            "tanggal": tanggal,
+            "jumlah": jumlah,
+            "status": status
+        }
+        
+        data_pembayaran[no_kamar].append(pembayaran_baru)
+        print(f"\nPembayaran untuk kamar {no_kamar} berhasil dicatat:")
+        print(f"Penyewa: {nama_penyewa}")
+        print(f"Jumlah: Rp{jumlah}")
+        print(f"Status: {status}")
+        
+        simpan_file_json("data_pembayaran.json", data_pembayaran)
+        break
 
 def lihat_riwayat_pembayaran():
-    no_kamar = input("Nomor Kamar: ")
-    if no_kamar not in data_pembayaran or not data_pembayaran[no_kamar]:
+    print("\n=== Riwayat Pembayaran ===")
+    no_kamar = input("Masukkan Nomor Kamar: ")
+    
+    if no_kamar not in data_pembayaran:
         print("Belum ada riwayat pembayaran untuk kamar ini.")
         return
-    
-    print(f"\n--- Riwayat Pembayaran untuk Kamar {no_kamar} ---")
+        
+    print(f"\nRiwayat Pembayaran Kamar {no_kamar}:")
     for pembayaran in data_pembayaran[no_kamar]:
-        print(f"Nama Penyewa: {pembayaran['nama_penyewa']}, "
-            f"Tanggal: {pembayaran['tanggal']}, "
-            f"Jumlah: Rp{pembayaran['jumlah']}, "
-            f"Status: {pembayaran['status']}")
+        print("\nDetail Pembayaran:")
+        print(f"Tanggal: {pembayaran['tanggal']}")
+        print(f"Penyewa: {pembayaran['nama_penyewa']}")
+        print(f"Jumlah: Rp{pembayaran['jumlah']}")
+        print(f"Status: {pembayaran['status']}")
 
 def edit_pembayaran():
     no_kamar = input("Nomor Kamar: ")
