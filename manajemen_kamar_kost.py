@@ -54,13 +54,16 @@ def tampilkan_menu_pengelola():
             print("Pilihan tidak ada")
         if pilih == "1":
             tambah_kamar()
-        elif pilihan == "2":
+        elif pilih == "2":
             hapus_kamar()
-        elif pilihan == "3":
+        elif pilih == "3":
             data_kamar_menu()
-        elif pilihan == "4":
-            print("Logout berhasil!")
-            return
+        elif pilih == "4":
+            from menu import main
+            print("Anda keluar dari role pengelola")
+            main()  # Kembali ke menu utama
+            
+            break
         else:
             print("Pilihan tidak valid!")
 
@@ -75,8 +78,9 @@ def tampilkan_menu_penyewa():
     elif pilih == "2" :
         pilih_kamar_penyewa()
     elif pilih == "3":
+        from menu import main
         print("Anda keluar dari role penyewa")
-        return
+        main() 
     else:
         print("Silahkan pilih menu yang ada.")
         tampilkan_menu_penyewa()

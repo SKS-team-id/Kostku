@@ -1,4 +1,5 @@
 import json
+import sys
 import os
 from manajemen_kamar_kost import tampilkan_menu_pengelola, tampilkan_menu_penyewa
 
@@ -47,39 +48,6 @@ def login():
         
         print("Login gagal! Username atau password salah. Silakan coba lagi.")
 
-# def login():
-#     print("=== Halaman Login ===")
-    
-#     while True:
-#         username = input("Masukkan username: ")
-#         if not username:
-#             print("Username masih kosong, silakan coba lagi!")
-#             continue
-        
-#         password = input("Masukkan password: ")
-#         if not password:
-#             print("Password masih kosong, silakan coba lagi!")
-#             continue
-        
-#         users = load_users(file_path)
-        
-#         if not users:
-#             print("Belum ada user terdaftar, silahkan register terlebih dahulu.")
-#             return
-        
-#         for user in users:
-#             if user['username'] == username and user['password'] == password:
-#                 print(f"Login berhasil! Selamat datang, {username}!")
-#                 if user['username'] == "admin":
-#                     print("Anda login sebagai pengelola.")
-#                     tampilkan_menu_pengelola()
-#                 else:
-#                     print("Anda login sebagai penyewa.")
-#                     tampilkan_menu_penyewa()
-#                 return user
-        
-#         print("Login gagal! Username atau password salah. Silakan coba lagi.")
-
 def register():
     print("=== Halaman Register ===")
     users = load_users(file_path)
@@ -105,7 +73,7 @@ def register():
 
 def logout():
     print("Logout berhasil! Sampai jumpa kembali >.<")
-    return None
+    sys.exit()
 
 def main():
     while True:
@@ -132,6 +100,8 @@ def main():
                     continue  # Go back to login menu
         elif pilihan == '2':
             register()
+        elif pilihan == '3':
+            logout()
         else:
             print("Pilihan tidak valid, silahkan pilih menu diatas!")
 

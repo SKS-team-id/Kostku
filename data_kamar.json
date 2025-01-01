@@ -1,132 +1,144 @@
 [
-  {
-    "id": "001",
-    "penyewa": "nipi",
-    "telepon": "0987654",
-    "alamat": "jl.asvgahb",
-    "harga": 90000,
-    "status": "Terisi",
-    "fasilitas": ["nipi", "nipi", "sapi"],
-    "tanggal_mulai": "2020-10-10",
-    "tanggal_akhir": "2021-01-10"
-  },
-  {
-    "id": "003",
-    "penyewa": "rijal",
-    "telepon": "008817766221",
-    "alamat": "jalan cibiru indah",
-    "harga": 700000,
-    "status": "Terisi",
-    "fasilitas": ["mobil", "ayam"],
-    "tanggal_mulai": "2024-12-12",
-    "tanggal_akhir": "2025-10-19"
-  },
-  {
-    "id": "004",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Dipilih",
-    "fasilitas": [],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "005",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Dipilih",
-    "fasilitas": [],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "006",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Dipilih",
-    "fasilitas": [],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "007",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Kosong",
-    "fasilitas": [],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "008",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Kosong",
-    "fasilitas": [],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "009",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Kosong",
-    "fasilitas": [],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "010",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Kosong",
-    "fasilitas": [],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "011",
-    "penyewa": "alif",
-    "telepon": 987654321,
-    "alamat": "dago no.19",
-    "harga": 80,
-    "status": "Terisi",
-    "fasilitas": ["dapur", "kasur", "bantal", "wc"],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "012",
-    "penyewa": "marwa",
-    "telepon": 12071074,
-    "alamat": "desa jaya jl.12 maju jalanl",
-    "harga": 910000,
-    "status": "Terisi",
-    "fasilitas": []
-  },
-  {
-    "id": "013",
-    "penyewa": "nopal",
-    "telepon": 20397120247,
-    "alamat": "disana",
-    "harga": 1921310,
-    "status": "Terisi",
-    "fasilitas": [],
-    "tanggal_mulai": "2024-11-20",
-    "tanggal_akhir": "2024-12-21"
-  }
+    {
+        "id": "001",
+        "penyewa": "nipi",
+        "telepon": "0987654",
+        "alamat": "jl.asvgahb",
+        "harga": 90000,
+        "status": "Terisi",
+        "fasilitas": [
+            "nipi",
+            "nipi",
+            "sapi"
+        ],
+        "tanggal_mulai": "2020-10-10",
+        "tanggal_akhir": "2021-01-10"
+    },
+    {
+        "id": "003",
+        "penyewa": "rijal",
+        "telepon": "008817766221",
+        "alamat": "jalan cibiru indah",
+        "harga": 700000,
+        "status": "Terisi",
+        "fasilitas": [
+            "mobil",
+            "ayam"
+        ],
+        "tanggal_mulai": "2024-12-12",
+        "tanggal_akhir": "2025-10-19"
+    },
+    {
+        "id": "004",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Dipilih",
+        "fasilitas": [],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "005",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Dipilih",
+        "fasilitas": [],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "006",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Dipilih",
+        "fasilitas": [],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "007",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": [],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "008",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": [],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "009",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": [],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "010",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Dipilih",
+        "fasilitas": [],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "011",
+        "penyewa": "alif",
+        "telepon": 987654321,
+        "alamat": "dago no.19",
+        "harga": 80,
+        "status": "Terisi",
+        "fasilitas": [
+            "dapur",
+            "kasur",
+            "bantal",
+            "wc"
+        ],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "012",
+        "penyewa": "marwa",
+        "telepon": 12071074,
+        "alamat": "desa jaya jl.12 maju jalanl",
+        "harga": 910000,
+        "status": "Terisi",
+        "fasilitas": []
+    },
+    {
+        "id": "013",
+        "penyewa": "nopal",
+        "telepon": 20397120247,
+        "alamat": "disana",
+        "harga": 1921310,
+        "status": "Terisi",
+        "fasilitas": [],
+        "tanggal_mulai": "2024-11-20",
+        "tanggal_akhir": "2024-12-21"
+    }
 ]
