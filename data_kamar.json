@@ -28,7 +28,9 @@
     "alamat": "",
     "harga": 0,
     "status": "Dipilih",
-    "fasilitas": []
+    "fasilitas": [],
+    "tanggal_mulai": "",
+    "tanggal_akhir": ""
   },
   {
     "id": "005",
@@ -37,7 +39,9 @@
     "alamat": "",
     "harga": 0,
     "status": "Dipilih",
-    "fasilitas": []
+    "fasilitas": [],
+    "tanggal_mulai": "",
+    "tanggal_akhir": ""
   },
   {
     "id": "006",
@@ -46,7 +50,9 @@
     "alamat": "",
     "harga": 0,
     "status": "Dipilih",
-    "fasilitas": []
+    "fasilitas": [],
+    "tanggal_mulai": "",
+    "tanggal_akhir": ""
   },
   {
     "id": "007",
@@ -66,7 +72,9 @@
     "alamat": "",
     "harga": 0,
     "status": "Kosong",
-    "fasilitas": []
+    "fasilitas": [],
+    "tanggal_mulai": "",
+    "tanggal_akhir": ""
   },
   {
     "id": "009",
@@ -75,7 +83,9 @@
     "alamat": "",
     "harga": 0,
     "status": "Kosong",
-    "fasilitas": []
+    "fasilitas": [],
+    "tanggal_mulai": "",
+    "tanggal_akhir": ""
   },
   {
     "id": "010",
@@ -84,17 +94,39 @@
     "alamat": "",
     "harga": 0,
     "status": "Kosong",
-    "fasilitas": []
-  },
-  {
-    "id": "011",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Kosong",
     "fasilitas": [],
     "tanggal_mulai": "",
     "tanggal_akhir": ""
+  },
+  {
+    "id": "011",
+    "penyewa": "alif",
+    "telepon": 987654321,
+    "alamat": "dago no.19",
+    "harga": 80,
+    "status": "Terisi",
+    "fasilitas": ["dapur", "kasur", "bantal", "wc"],
+    "tanggal_mulai": "",
+    "tanggal_akhir": ""
+  },
+  {
+    "id": "012",
+    "penyewa": "marwa",
+    "telepon": 12071074,
+    "alamat": "desa jaya jl.12 maju jalanl",
+    "harga": 910000,
+    "status": "Terisi",
+    "fasilitas": []
+  },
+  {
+    "id": "013",
+    "penyewa": "nopal",
+    "telepon": 20397120247,
+    "alamat": "disana",
+    "harga": 1921310,
+    "status": "Terisi",
+    "fasilitas": [],
+    "tanggal_mulai": "2024-11-20",
+    "tanggal_akhir": "2024-12-21"
   }
 ]
