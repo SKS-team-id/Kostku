@@ -1,24 +1,16 @@
 {
-    "001": [
+    "005": [
         {
-            "nama_penyewa": "nipi",
-            "tanggal": "2024-12-10",
-            "jumlah": "900000",
+            "nama_penyewa": "asep",
+            "tanggal": "2021-02-10",
+            "jumlah": 9000000.0,
             "status": "Lunas"
         },
         {
-            "nama_penyewa": "ipul",
-            "tanggal": "2024-12-12",
-            "jumlah": "200000",
+            "nama_penyewa": "asep",
+            "tanggal": "2022-11-11",
+            "jumlah": "30000",
             "status": "Belum lunas"
         }
-    ],
-    "002": [
-        {
-            "nama_penyewa": "vina",
-            "tanggal": "2024-12-10",
-            "jumlah": "900000",
-            "status": "Lunas"
-        }
     ]
-}
+} 

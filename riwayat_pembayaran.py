@@ -116,7 +116,7 @@ def input_pembayaran():
             if status == "lunas" or status == "belum lunas":
                 status = status.capitalize()
                 break
-            print("Status harus 'Lunas' atau 'Belum Lunas'. Silakan coba lagi.")
+            print("Status harus 'Lunas' atau 'Belum Lunas' dan tidak boleh kosong. Silakan coba lagi.")
 
         # Add payment record
         pembayaran_baru = {
