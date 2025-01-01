@@ -38,21 +38,6 @@ def tampilan_pembayaran_pengelola():
         else:
             print("Pilihan tidak ada. Pilih menu yang ada.")
 
-def tampilan_pembayaran_penyewa():
-    while True:
-        print("\n--- Menu Penyewa ---")
-        print("1. Lihat Riwayat Pembayaran")
-        print("2. Keluar")
-        
-        pilihan = input("Pilih menu: ")
-        if pilihan == "1":
-            lihat_riwayat_pembayaran()
-        elif pilihan == "2":
-            print("Keluar dari menu penyewa.")
-            break
-        else:
-            print("Pilihan tidak valid. Silakan coba lagi.")
-
 def input_pembayaran():
     print("\n=== Input Pembayaran ===")
     print("\nDaftar Kamar Terisi:")
