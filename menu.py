@@ -56,19 +56,12 @@ def login():
                         tampilkan_menu_penyewa()  # Panggil menu penyewa
                     return user
         
-        if not username_found:
-            print("Username tidak ditemukan.")
-        if not password_correct:
-            print("Password salah.")
 
-        if user and not password_correct:
-            print("Login gagal! Password salah. Silakan coba lagi.")
-        elif not username_found and password_correct:
-            print("Login gagal! Username tidak ditemukan. Silakan coba lagi.")
+        if not username_found and password_correct:
+            print("Login gagal! Username atau password salah. Silakan coba lagi.")
 
         if not username_found or not password_correct:
             attempts += 1
-            
     print("Kesempatan login habis. Silakan coba lagi nanti.")
     return
 
