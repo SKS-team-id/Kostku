@@ -1,15 +1,10 @@
 import json
 import os
+from datetime import datetime
 
 def validate_date(date_string):
     try:
-        if not all(c.isdigit() or c == '-' for c in date_string):
-            return False
-        if len(date_string.split('-')) != 3:
-            return False
-        year, month, day = map(int, date_string.split('-'))
-        if not (1900 <= year <= 9999 and 1 <= month <= 12 and 1 <= day <= 31):
-            return False
+        datetime.strptime(date_string, '%Y-%m-%d')
         return True
     except ValueError:
         return False
@@ -131,21 +126,31 @@ def hapus_kamar():
     print("Daftar Kamar:")
     while True:
         for kamar in data_kamar:
+
             print(f"Kamar {kamar['id']} - Status: {kamar['status']}")
         kamar_id = input("Masukkan ID kamar yang ingin dihapus atau ENTER untuk kembali: ")
         if not kamar_id:
             print("Kembali ke menu pengelola")
             tampilkan_menu_pengelola()
-            continue
+            return
+
         if not kamar_id.isdigit():
             print("Input tidak valid. Nomor kamar harus berupa angka.")
             continue
+
+        kamar_ditemukan = False
         for kamar in data_kamar:
             if kamar["id"] == kamar_id:
-                data_kamar.remove(kamar)
-                print(f"Kamar {kamar_id} berhasil dihapus.")
-                simpan_ke_json()
-                return
+                kamar_ditemukan = True
+                if kamar["status"] == "Kosong":
+                    data_kamar.remove(kamar)
+                    print(f"Kamar {kamar_id} berhasil dihapus.")
+                    simpan_ke_json()
+                else:
+                    print(f"Kamar {kamar_id} tidak dapat dihapus karena statusnya masih 'Terisi'.")
+                break
+    
+        if not kamar_ditemukan:
             print("Kamar tidak ditemukan.")
 
 def data_kamar_menu():
@@ -215,16 +220,27 @@ def input_data_kamar(kamar):
 
     while True:
         harga = input("Masukkan harga kamar: ")
-
         if harga.isdigit():
             kamar["harga"] = int(harga)
             break
         else:
             print("Harga harus berupa angka.")
 
-    kamar["tanggal_mulai"] = input("Masukkan tanggal mulai sewa (YYYY-MM-DD): ")
+    while True:
+        tanggal_mulai = input("Masukkan tanggal mulai sewa (YYYY-MM-DD): ")
+        if validate_date(tanggal_mulai):
+            kamar["tanggal_mulai"] = tanggal_mulai
+            break
+        else:
+            print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD.")
 
-    kamar["tanggal_akhir"] = input("Masukkan tanggal berakhir sewa (YYYY-MM-DD): ")
+    while True:
+        tanggal_akhir = input("Masukkan tanggal berakhir sewa (YYYY-MM-DD): ")
+        if validate_date(tanggal_akhir):
+            kamar["tanggal_akhir"] = tanggal_akhir
+            break
+        else:
+            print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD.")
 
     while True:
         status = input("Masukkan status kamar (True untuk Terisi): ").capitalize()
@@ -275,13 +291,23 @@ def edit_data_kamar(kamar):
             break
         print("Harga harus berupa angka.")
 
-    tanggal_mulai = input(f"Tanggal Mulai Sewa [{kamar['tanggal_mulai']}] (ENTER jika tidak diubah): ").strip()
-    if tanggal_mulai:
-        kamar["tanggal_mulai"] = tanggal_mulai
+    while True:
+        tanggal_mulai = input(f"Tanggal Mulai Sewa [{kamar['tanggal_mulai']}] (YYYY-MM-DD, ENTER jika tidak diubah): ").strip()
+        if not tanggal_mulai:
+            break
+        if validate_date(tanggal_mulai):
+            kamar["tanggal_mulai"] = tanggal_mulai
+            break
+        print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD.")
 
-    tanggal_akhir = input(f"Tanggal Akhir Sewa [{kamar['tanggal_akhir']}] (ENTER jika tidak diubah): ").strip()
-    if tanggal_akhir:
-        kamar["tanggal_akhir"] = tanggal_akhir
+    while True:
+        tanggal_akhir = input(f"Tanggal Akhir Sewa [{kamar['tanggal_akhir']}] (YYYY-MM-DD, ENTER jika tidak diubah): ").strip()
+        if not tanggal_akhir:
+            break
+        if validate_date(tanggal_akhir):
+            kamar["tanggal_akhir"] = tanggal_akhir
+            break
+        print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD.")
 
     while True:
         status = input(f"Status kamar (Enter untuk terisi dan False untuk kosong) [{kamar['status']}] : ").capitalize().strip()

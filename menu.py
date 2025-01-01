@@ -17,16 +17,19 @@ def save_users(users):
 
 def login():
     print("=== Halaman Login ===")
+    attempts = 0
     
-    while True:
+    while attempts < 3:
         username = input("Masukkan username: ")
         if not username:
             print("Username masih kosong, silakan coba lagi!")
+            attempts += 1
             continue
         
         password = input("Masukkan password: ")
         if not password:
             print("Password masih kosong, silakan coba lagi!")
+            attempts += 1
             continue
         
         users = load_users("users.json")
@@ -47,6 +50,9 @@ def login():
                 return user
         
         print("Login gagal! Username atau password salah. Silakan coba lagi.")
+        attempts += 1
+    print("Kesempatan login habis. Silakan coba lagi nanti.")
+    return
 
 def register():
     print("=== Halaman Register ===")
@@ -59,9 +65,18 @@ def register():
             continue
         if any(user["username"] == username for user in users):
             print("Username sudah digunakan, silakan coba username lain.")
-            return 
+            return
+        
         password = input("Masukkan password: ")
+        if not password:
+            print("Password masih kosong, silakan coba lagi!")
+            continue
+
         kode = input("Masukkan kode referral: ")
+        if not kode:
+            print("Kode referral masih kosong, silakan coba lagi!")
+            continue
+        
         if kode == "kostku1":
             new_user = {"username": username, "password": password}
             users.append(new_user)

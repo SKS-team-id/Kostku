@@ -7,16 +7,10 @@
             "status": "Lunas"
         },
         {
-            "nama_penyewa": "nipi",
-            "tanggal": "2024-08-12",
-            "jumlah": "700000",
-            "status": "Lunas"
-        },
-        {
-            "nama_penyewa": "nipi",
-            "tanggal": "2024-12-10",
-            "jumlah": "90000",
-            "status": "Lunas"
+            "nama_penyewa": "ipul",
+            "tanggal": "2024-12-12",
+            "jumlah": "200000",
+            "status": "Belum lunas"
         }
     ],
     "002": [
