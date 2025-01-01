@@ -48,14 +48,28 @@
     },
     {
         "id": "005",
+        "penyewa": "asep",
+        "telepon": 8765,
+        "alamat": "Jl. Manggis No.17",
+        "harga": 3000000,
+        "status": "Terisi",
+        "fasilitas": [
+            "kasur",
+            "lemari",
+            "meja belajar",
+            ""
+        ],
+        "tanggal_mulai": "2024-10-10",
+        "tanggal_akhir": "2025-01-10"
+    },
+    {
+        "id": "006",
         "penyewa": "",
         "telepon": "",
         "alamat": "",
         "harga": 0,
         "status": "Kosong",
-        "fasilitas": [],
-        "tanggal_mulai": "",
-        "tanggal_akhir": ""
+        "fasilitas": []
     },
     {
         "id": "007",
@@ -96,13 +110,13 @@
     },
     {
         "id": "010",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Kosong",
+        "penyewa": "deno",
+        "telepon": 8634567,
+        "alamat": "Jl. Semangka No. 57",
+        "harga": 900000,
+        "status": "Terisi",
         "fasilitas": [],
-        "tanggal_mulai": "",
-        "tanggal_akhir": ""
+        "tanggal_mulai": "2020-10-20",
+        "tanggal_akhir": "2021-01-20"
     }
 ]

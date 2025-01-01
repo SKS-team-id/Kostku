@@ -18,7 +18,7 @@ data_pembayaran = baca_file_json("data_pembayaran.json", {})
 
 def tampilan_pembayaran_pengelola():
     while True:
-        print("\n--- Menu Pengelola Kost ---\n")
+        print("\n--- Menu Riwayat Pembayaran Pengelola Kost ---\n")
         print("1. Input Pembayaran")
         print("2. Edit data pembayaran")
         print("3. Hapus data pembayaran")
@@ -26,7 +26,7 @@ def tampilan_pembayaran_pengelola():
         print("5. Keluar")
         pilih = input("Pilih Menu: ")
         if not pilih:
-            print("Pilihan tidak ada. Pilih menu yang ada.")
+            print("Menu masih kosong. Silakan masukkan menu yang ada!")
             continue
         if pilih == "1":
             input_pembayaran()
@@ -40,7 +40,7 @@ def tampilan_pembayaran_pengelola():
             print("Anda keluar dari role pengelola.")
             return
         else:
-            print("Pilihan tidak valid. Silakan coba lagi.")
+            print("Pilihan tidak ada. Pilih menu yang ada!")
 
 def tampilan_pembayaran_penyewa():
     while True:
