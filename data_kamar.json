@@ -1,44 +1,94 @@
 [
-  {
-    "id": "001",
-    "penyewa": "nipi",
-    "telepon": "0987654",
-    "alamat": "jl.asvgahb",
-    "harga": 90000,
-    "status": "Terisi",
-    "fasilitas": ["nipi", "nipi", "sapi"],
-    "tanggal_mulai": "2020-10-10",
-    "tanggal_akhir": "2021-01-10"
-  },
-  {
-    "id": "002",
-    "penyewa": "vina",
-    "telepon": "098765",
-    "alamat": "jl.sabhas",
-    "harga": 80000,
-    "status": "Terisi",
-    "fasilitas": [],
-    "tanggal_mulai": "2021-03-01",
-    "tanggal_akhir": "2023-06-01"
-  },
-  {
-    "id": "003",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Kosong",
-    "fasilitas": ["mobil", "ayam"],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "004",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Kosong",
-    "fasilitas": []
-  }
+    {
+        "id": "001",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
+    },
+    {
+        "id": "002",
+        "penyewa": "vina",
+        "telepon": "098765",
+        "alamat": "jl.sabhas",
+        "harga": 80000,
+        "status": "Terisi",
+        "fasilitas": [],
+        "tanggal_mulai": "2021-03-01",
+        "tanggal_akhir": "2023-06-01"
+    },
+    {
+        "id": "003",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": [
+            "mobil",
+            "ayam"
+        ],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "004",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
+    },
+    {
+        "id": "005",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
+    },
+    {
+        "id": "007",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": [
+            "kasur",
+            "lemari",
+            "meja belajar"
+        ]
+    },
+    {
+        "id": "008",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
+    },
+    {
+        "id": "009",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
+    },
+    {
+        "id": "010",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
+    }
 ]

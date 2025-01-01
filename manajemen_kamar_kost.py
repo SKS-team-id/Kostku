@@ -51,8 +51,11 @@ def tampilkan_menu_pengelola():
         print("4. Riwayat Pembayaran")
         print("5. Keluar")
         pilih = input("Pilih Menu: ")
-        if pilih != 1-4 :
-            print("Pilihan tidak ada")
+
+        if not pilih:
+            print("Menu masih kosong, silakan masukkan menu yang ada!")
+            continue
+
         if pilih == "1":
             tambah_kamar()
         elif pilih == "2":
@@ -69,34 +72,45 @@ def tampilkan_menu_pengelola():
             
             break
         else:
-            print("Pilihan tidak valid!")
+            print("Pilihan tidak ada. Pilih menu yang ada")
 
 def tampilkan_menu_penyewa():
-    print("\n--- Menu Penyewa ---")
-    print("1. Lihat Data Kamar")
-    print("2. Pilih Kamar")
-    print("3. Lihat Riwayat Pembayaran")
-    print("4. Keluar")
-    pilih = input("Pilih Menu: ")
-    if pilih == "1":
-        lihat_data_kamar_penyewa()
-    elif pilih == "2" :
-        pilih_kamar_penyewa()
-    elif pilih == "3":
-        from riwayat_pembayaran import lihat_riwayat_pembayaran
-        lihat_riwayat_pembayaran() 
-    elif pilih == "4":
-        from menu import main
-        print("Anda keluar dari role penyewa")
-        main() 
-    else:
-        print("Silahkan pilih menu yang ada.")
-        tampilkan_menu_penyewa()
+    while True:
+        print("\n--- Menu Penyewa ---")
+        print("1. Lihat Data Kamar")
+        print("2. Pilih Kamar")
+        print("3. Lihat Riwayat Pembayaran")
+        print("4. Keluar")
+        pilih = input("Pilih Menu: ")
+
+        if not pilih:
+            print("Menu masih kosong, silakan masukkan menu yang ada!")
+            continue
+
+        if pilih == "1":
+            lihat_data_kamar_penyewa()
+        elif pilih == "2" :
+            pilih_kamar_penyewa()
+        elif pilih == "3":
+            from riwayat_pembayaran import lihat_riwayat_pembayaran
+            lihat_riwayat_pembayaran() 
+        elif pilih == "4":
+            from menu import main
+            print("Anda keluar dari role penyewa")
+            main() 
+        else:
+            print("Silahkan pilih menu yang ada.")
+            tampilkan_menu_penyewa()
+    
 
 def tambah_kamar():
     print("\n--- Tambah Kamar ---")
     while True:
-        kamar_baru = input("Masukkan Nomor kamar baru (3 digit, contoh: 001): ")
+        kamar_baru = input("Masukkan Nomor kamar baru (3 digit, contoh: 001) atau ENTER untuk kembali: ")
+        if not kamar_baru:
+            print("Kembali ke menu pengelola")
+            tampilkan_menu_pengelola()
+            continue
         if not kamar_baru.isdigit():
             print("Input tidak valid. Nomor kamar harus berupa angka.")
             return
@@ -111,7 +125,6 @@ def tambah_kamar():
         print(f"Kamar {kamar_baru} berhasil ditambahkan.")
         simpan_ke_json()
         break
-        break
 
 def hapus_kamar():
     print("\n--- Hapus Kamar ---")
@@ -119,7 +132,11 @@ def hapus_kamar():
     while True:
         for kamar in data_kamar:
             print(f"Kamar {kamar['id']} - Status: {kamar['status']}")
-        kamar_id = input("Masukkan ID kamar yang ingin dihapus: ")
+        kamar_id = input("Masukkan ID kamar yang ingin dihapus atau ENTER untuk kembali: ")
+        if not kamar_id:
+            print("Kembali ke menu pengelola")
+            tampilkan_menu_pengelola()
+            continue
         if not kamar_id.isdigit():
             print("Input tidak valid. Nomor kamar harus berupa angka.")
             continue
@@ -164,7 +181,7 @@ def data_kamar_menu():
                 elif pilihan == "5":
                     tampilkan_menu_pengelola()
                 else:
-                    print("Pilihan tidak valid.")
+                    print("Pilihan tidak ada. Pilih menu yang ada.")
                 return
     if kamar_id:
         print("Kamar tidak ditemukan.")
@@ -362,7 +379,7 @@ def edit_fasilitas_kamar(kamar):
         for i, fasilitas in enumerate(kamar["fasilitas"], start=1):
             print(f"{i}. {fasilitas}")
 
-        nomor_input = input("Pilih nomor fasilitas yang ingin diedit (ENTER untuk kembali): ").strip()
+        nomor_input = input("Pilih nomor fasilitas yang ingin diedit: ").strip()
 
         if not nomor_input:
             print("Pilihan tidak ada atau Anda belum memilih fasilitas.")
@@ -432,5 +449,5 @@ def pilih_kamar_penyewa():
             break
     
     if not kamar_ditemukan:
-        print("Maaf, kamar yang Anda pilih tidak ada. Silakan pilih kamar lainnya.")
+        print("Maaf, kamar yang Anda pilih tidak ada. Silakan pilih kamar yang ada.")
         tampilkan_menu_penyewa()

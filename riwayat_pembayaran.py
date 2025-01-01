@@ -36,7 +36,7 @@ def tampilan_pembayaran_pengelola():
             print("Anda keluar dari role pengelola.")
             return
         else:
-            print("Pilihan tidak ada. Pilih menu yang ada.")
+            print("Pilihan tidak ada. Pilih menu yang ada")
 
 def input_pembayaran():
     print("\n=== Input Pembayaran ===")
