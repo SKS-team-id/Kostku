@@ -16,21 +16,69 @@ def save_users(users):
 
 def login():
     print("=== Halaman Login ===")
-    username = input("Masukkan username: ")
-    password = input("Masukkan password: ")
-    users = load_users(file_path)
+    
+    while True:
+        username = input("Masukkan username: ")
+        if not username:
+            print("Username masih kosong, silakan coba lagi!")
+            continue
+        
+        password = input("Masukkan password: ")
+        if not password:
+            print("Password masih kosong, silakan coba lagi!")
+            continue
+        
+        users = load_users("users.json")
+        
+        if not users:
+            print("Belum ada user terdaftar, silahkan register terlebih dahulu.")
+            return
+        
+        for user in users:
+            if user['username'] == username and user['password'] == password:
+                print(f"Login berhasil! Selamat datang, {username}!")
+                if user['username'] == "admin":
+                    print("Anda login sebagai pengelola.")
+                    tampilkan_menu_pengelola()  # Panggil menu pengelola
+                else:
+                    print("Anda login sebagai penyewa.")
+                    tampilkan_menu_penyewa()  # Panggil menu penyewa
+                return user
+        
+        print("Login gagal! Username atau password salah. Silakan coba lagi.")
 
-    for user in users:
-        if user['username'] == username and user['password'] == password:
-            print(f"Login berhasil! Selamat datang, {username}!")
-            if user['username'] == "admin":
-                print("Anda login sebagai pengelola.")
-                tampilkan_menu_pengelola()
-            elif user['username'] != "admin":
-                print("Anda login sebagai penyewa.")
-                tampilkan_menu_penyewa()
-            return user
-    print("Login gagal! Username atau password salah.")
+# def login():
+#     print("=== Halaman Login ===")
+    
+#     while True:
+#         username = input("Masukkan username: ")
+#         if not username:
+#             print("Username masih kosong, silakan coba lagi!")
+#             continue
+        
+#         password = input("Masukkan password: ")
+#         if not password:
+#             print("Password masih kosong, silakan coba lagi!")
+#             continue
+        
+#         users = load_users(file_path)
+        
+#         if not users:
+#             print("Belum ada user terdaftar, silahkan register terlebih dahulu.")
+#             return
+        
+#         for user in users:
+#             if user['username'] == username and user['password'] == password:
+#                 print(f"Login berhasil! Selamat datang, {username}!")
+#                 if user['username'] == "admin":
+#                     print("Anda login sebagai pengelola.")
+#                     tampilkan_menu_pengelola()
+#                 else:
+#                     print("Anda login sebagai penyewa.")
+#                     tampilkan_menu_penyewa()
+#                 return user
+        
+#         print("Login gagal! Username atau password salah. Silakan coba lagi.")
 
 def register():
     print("=== Halaman Register ===")
@@ -60,14 +108,28 @@ def logout():
     return None
 
 def main():
-    pengguna_saat_ini = None
     while True:
-        print("\n=== Pilihan Menu ===")
+        print("\n=== Pilihan Menu Login/Register ===")
         print("1. Login")
         print("2. Register")
+        print("3. Keluar")
+        
         pilihan = input("Pilih (angka menu): ").strip()
+        
+        if not pilihan:
+            print("Pilihan masih kosong, silahkan pilih menu diatas!")
+            continue
+            
         if pilihan == '1':
-            login()
+            user = login()
+            if user and user.get('username') == "admin":
+                result = tampilkan_menu_pengelola()
+                if result == "LOGOUT":
+                    continue  # Go back to login menu
+            elif user:
+                result = tampilkan_menu_penyewa()
+                if result == "LOGOUT":
+                    continue  # Go back to login menu
         elif pilihan == '2':
             register()
         else:
