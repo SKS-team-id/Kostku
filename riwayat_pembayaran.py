@@ -47,7 +47,6 @@ def tampilan_pembayaran_penyewa():
         print("\n--- Menu Penyewa ---\n")
         print("1. Lihat Riwayat Pembayaran")
         print("2. Keluar")
-        
         pilihan = input("Pilih menu: ")
         if not pilihan:
             print("Pilihan tidak ada. Pilih menu yang ada.")

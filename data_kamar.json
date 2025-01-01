@@ -5,7 +5,7 @@
         "telepon": "",
         "alamat": "",
         "harga": 0,
-        "status": "Kosong",
+        "status": "Dipilih",
         "fasilitas": [],
         "tanggal_mulai": "",
         "tanggal_akhir": ""

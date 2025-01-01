@@ -10,5 +10,14 @@
     {
         "username": "aku",
         "password": "aku1"
+    },
+    {
+        "username": "dia",
+        "password": "dia1"
+    },
+    {
+        "username": "marwa",
+        "password": "marwa1",
+        "room_id": null
     }
 ]

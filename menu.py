@@ -20,17 +20,16 @@ def login():
     attempts = 0
     
     while attempts < 3:
-        remaining_attemps = 3 - attempts
-        print(f"Sisa kesempatan login anda {remaining_attemps}")
-
         username = input("Masukkan username: ")
         if not username:
             print("Username masih kosong, silakan coba lagi!")
+            attempts += 1
             continue
         
         password = input("Masukkan password: ")
         if not password:
             print("Password masih kosong, silakan coba lagi!")
+            attempts += 1
             continue
         
         users = load_users("users.json")
@@ -39,29 +38,19 @@ def login():
             print("Belum ada user terdaftar, silahkan register terlebih dahulu.")
             return
         
-        username_found = False
-        password_correct = False
-
         for user in users:
-            if user['username'] == username: 
-                username_found = True
-                if user['password'] == password:
-                    password_correct = True
-                    print(f"Login berhasil! Selamat datang, {username}!")
-                    if user['username'] == "admin":
-                        print("Anda login sebagai pengelola.")
-                        tampilkan_menu_pengelola()  # Panggil menu pengelola
-                    else:
-                        print("Anda login sebagai penyewa.")
-                        tampilkan_menu_penyewa()  # Panggil menu penyewa
-                    return user
+            if user['username'] == username and user['password'] == password:
+                print(f"Login berhasil! Selamat datang, {username}!")
+                if user['username'] == "admin":
+                    print("Anda login sebagai pengelola.")
+                    tampilkan_menu_pengelola(user)  # Pass the user to the function
+                else:
+                    print("Anda login sebagai penyewa.")
+                    tampilkan_menu_penyewa(user)  # Pass the user to the function
+                return user
         
-
-        if not username_found and password_correct:
-            print("Login gagal! Username atau password salah. Silakan coba lagi.")
-
-        if not username_found or not password_correct:
-            attempts += 1
+        print("Login gagal! Username atau password salah. Silakan coba lagi.")
+        attempts += 1
     print("Kesempatan login habis. Silakan coba lagi nanti.")
     return
 
@@ -89,7 +78,7 @@ def register():
             continue
         
         if kode == "kostku1":
-            new_user = {"username": username, "password": password}
+            new_user = {"username": username, "password": password, "room_id": None}
             users.append(new_user)
             save_users(users)
             print("Registrasi berhasil! Silakan login.")
@@ -117,11 +106,11 @@ def main():
         if pilihan == '1':
             user = login()
             if user and user.get('username') == "admin":
-                result = tampilkan_menu_pengelola()
+                result = tampilkan_menu_pengelola(user)
                 if result == "LOGOUT":
                     continue  # Go back to login menu
             elif user:
-                result = tampilkan_menu_penyewa()
+                result = tampilkan_menu_penyewa(user)
                 if result == "LOGOUT":
                     continue  # Go back to login menu
         elif pilihan == '2':
