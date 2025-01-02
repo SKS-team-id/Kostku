@@ -6,7 +6,7 @@
     {
         "username": "saya",
         "password": "saya1",
-        "room_id": null
+        "room_id": "007"
     },
     {
         "username": "aku",
@@ -16,7 +16,7 @@
     {
         "username": "dia",
         "password": "dia1",
-        "room_id": null
+        "room_id": "006"
     },
     {
         "username": "marwa",

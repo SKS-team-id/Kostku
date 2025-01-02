@@ -211,7 +211,7 @@ def input_data_kamar(kamar):
 
     while True:
         alamat = input("Masukkan alamat penyewa: ")
-        if all(char.isalnum() or char.isspace() for char in alamat):
+        if alamat :
             kamar["alamat"] = alamat
             break
         else:
@@ -486,7 +486,11 @@ def pilih_kamar_penyewa(user):
                 user["room_id"] = kamar_id
                 print(f"Kamar {kamar_id} berhasil dipilih. Silakan melanjutkan proses dengan pengelola.")
                 simpan_ke_json()  # Simpan perubahan ke data kamar
-                simpan_users(load_users())  # Simpan perubahan ke data pengguna
+                users = load_users()
+                for u in users:
+                    if u["username"] == user["username"]:
+                        u["room_id"] = kamar_id
+                simpan_users(users)  # Simpan perubahan ke data pengguna
                 tampilkan_menu_penyewa(user)
             elif kamar["status"] == "Dipilih":
                 print(f"Kamar {kamar_id} sudah dalam status 'Dipilih'. Anda dapat melanjutkan proses dengan pengelola.")

@@ -1,25 +1,25 @@
 [
     {
         "id": "001",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Dipilih",
+        "penyewa": "nugi",
+        "telepon": 131024816124,
+        "alamat": "jl.cibiru indah1",
+        "harga": 700000,
+        "status": "Terisi",
         "fasilitas": [],
-        "tanggal_mulai": "",
-        "tanggal_akhir": ""
+        "tanggal_mulai": "2025-01-10",
+        "tanggal_akhir": "2025-02-10"
     },
     {
         "id": "002",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Kosong",
+        "penyewa": "aku",
+        "telepon": 912836192416,
+        "alamat": "jl. jauh banget 2",
+        "harga": 500000,
+        "status": "Terisi",
         "fasilitas": [],
-        "tanggal_mulai": "",
-        "tanggal_akhir": ""
+        "tanggal_mulai": "2025-02-01",
+        "tanggal_akhir": "2025-03-01"
     },
     {
         "id": "003",
@@ -64,41 +64,32 @@
     },
     {
         "id": "006",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Kosong",
-        "fasilitas": []
+        "penyewa": "acep",
+        "telepon": 345678,
+        "alamat": "jl jalan 08",
+        "harga": 90,
+        "status": "Terisi",
+        "fasilitas": [],
+        "tanggal_mulai": "2020-01-02",
+        "tanggal_akhir": "2020-03-02"
     },
     {
         "id": "007",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Kosong",
+        "penyewa": "sina",
+        "telepon": 845678,
+        "alamat": "jl. anggur 1",
+        "harga": 80,
+        "status": "Terisi",
         "fasilitas": [
             "kasur",
             "lemari",
             "meja belajar"
         ],
-        "tanggal_mulai": "",
-        "tanggal_akhir": ""
+        "tanggal_mulai": "2020-01-01",
+        "tanggal_akhir": "2020-03-01"
     },
     {
         "id": "008",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Kosong",
-        "fasilitas": [],
-        "tanggal_mulai": "",
-        "tanggal_akhir": ""
-    },
-    {
-        "id": "009",
         "penyewa": "",
         "telepon": "",
         "alamat": "",
@@ -107,6 +98,17 @@
         "fasilitas": [],
         "tanggal_mulai": "",
         "tanggal_akhir": ""
+    },
+    {
+        "id": "009",
+        "penyewa": "kura",
+        "telepon": 84567,
+        "alamat": "jl. manggis 2",
+        "harga": 800,
+        "status": "Terisi",
+        "fasilitas": [],
+        "tanggal_mulai": "2020-01-01",
+        "tanggal_akhir": "2020-03-01"
     },
     {
         "id": "010",

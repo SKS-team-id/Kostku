@@ -6,5 +6,49 @@
             "jumlah": "2000",
             "status": "Lunas"
         }
+    ],
+    "001": [
+        {
+            "nama_penyewa": "nugi",
+            "tanggal": "2025-01-09",
+            "jumlah": "700000",
+            "status": "Lunas"
+        }
+    ],
+    "002": [
+        {
+            "nama_penyewa": "aku",
+            "tanggal": "2025-02-01",
+            "jumlah": "500000",
+            "status": "Lunas"
+        }
+    ],
+    "007": [
+        {
+            "nama_penyewa": "sina",
+            "tanggal": "2020-01-01",
+            "jumlah": "80",
+            "status": "Lunas"
+        },
+        {
+            "nama_penyewa": "sina",
+            "tanggal": "2020-03-01",
+            "jumlah": "80",
+            "status": "Belum lunas"
+        }
+    ],
+    "006": [
+        {
+            "nama_penyewa": "acep",
+            "tanggal": "2020-01-02",
+            "jumlah": "90",
+            "status": "Lunas"
+        },
+        {
+            "nama_penyewa": "acep",
+            "tanggal": "2020-03-02",
+            "jumlah": "90",
+            "status": "Belum lunas"
+        }
     ]
 }
