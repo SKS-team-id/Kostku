@@ -16,7 +16,7 @@ def simpan_file_json(nama_file, data):
 data_kamar = baca_file_json("data_kamar.json", [])
 data_pembayaran = baca_file_json("data_pembayaran.json", {})
 
-def tampilan_pembayaran_pengelola():
+def tampilan_pembayaran_pengelola(user):
     while True:
         print("\n--- Menu Riwayat Pembayaran Pengelola Kost ---\n")
         print("1. Input Pembayaran")
@@ -29,20 +29,22 @@ def tampilan_pembayaran_pengelola():
             print("Menu masih kosong. Silakan masukkan menu yang ada!")
             continue
         if pilih == "1":
-            input_pembayaran()
+            input_pembayaran(user)
         elif pilih == "2":
-            edit_pembayaran()
+            edit_pembayaran(user)
         elif pilih == "3":
-            hapus_pembayaran()
+            hapus_pembayaran(user)
         elif pilih == "4":
-            lihat_riwayat_pembayaran()
+            lihat_riwayat_pembayaran(user)
         elif pilih == "5":
             print("Anda keluar dari role pengelola.")
+            from manajemen_kamar_kost import tampilkan_menu_pengelola
+            tampilkan_menu_pengelola(user)
             return
         else:
             print("Pilihan tidak ada. Pilih menu yang ada!")
 
-def tampilan_pembayaran_penyewa():
+def tampilan_pembayaran_penyewa(user):
     while True:
         print("\n--- Menu Penyewa ---\n")
         print("1. Lihat Riwayat Pembayaran")
@@ -52,14 +54,14 @@ def tampilan_pembayaran_penyewa():
             print("Pilihan tidak ada. Pilih menu yang ada.")
             continue
         if pilihan == "1":
-            lihat_riwayat_pembayaran()
+            lihat_riwayat_pembayaran(user)
         elif pilihan == "2":
             print("Keluar dari menu penyewa.")
             return
         else:
             print("Pilihan tidak valid. Silakan coba lagi.")
 
-def input_pembayaran():
+def input_pembayaran(user):
     print("\n=== Input Pembayaran ===\n")
     print("Daftar Kamar Terisi:")
     kamar_terisi = False
@@ -83,7 +85,8 @@ def input_pembayaran():
         
         if not kamar:
             print("Nomor kamar tidak valid, silakan coba lagi.")
-            continue
+            tampilan_pembayaran_pengelola(user)
+            return
             
         # Initialize payment history for new room
         if no_kamar not in data_pembayaran:
@@ -134,7 +137,7 @@ def input_pembayaran():
         simpan_file_json("data_pembayaran.json", data_pembayaran)
         break
 
-def lihat_riwayat_pembayaran():
+def lihat_riwayat_pembayaran(user):
     print("\n=== Riwayat Pembayaran ===\n")
     
     while True:
@@ -156,7 +159,7 @@ def lihat_riwayat_pembayaran():
             print(f"Status: {pembayaran['status']}")
         break
 
-def edit_pembayaran():
+def edit_pembayaran(user):
     print("\n=== Edit Pembayaran ===\n")
 
     while True:
@@ -178,26 +181,32 @@ def edit_pembayaran():
         except (ValueError, IndexError):
             print("Pilihan tidak valid.")
             return
-
-        pembayaran["nama_penyewa"] = input(f"Nama Penyewa [{pembayaran['nama_penyewa']}]: ") or pembayaran["nama_penyewa"]
         
         while True:    
-            tanggal = input(f"Tanggal Pembayaran [{pembayaran['tanggal']}]: ") or pembayaran["tanggal"]
+            tanggal = input(f"Tanggal Pembayaran [{pembayaran['tanggal']}] ENTER jika tidak ingin mengubah: ") or pembayaran["tanggal"]
+            if not tanggal:
+                break
             try:
-                datetime.strptime(tanggal, "%Y-%m-%d")  # Validasi format tanggal
+                datetime.strptime(tanggal, "%Y-%m-%d")
                 pembayaran["tanggal"] = tanggal
                 break
             except ValueError:
                 print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD.")
-            
-        try:
-            pembayaran["jumlah"] = float(input(f"Jumlah yang Dibayarkan [{pembayaran['jumlah']}]: ") or pembayaran["jumlah"])
-        except ValueError:
-            print("Jumlah harus berupa angka.")
-            return
+        
+        while True:
+            jumlah = input(f"Jumlah yang Dibayarkan [{pembayaran['jumlah']}] ENTER jika tidak ingin mengubah: ")
+            if not jumlah:
+                break
+            try:
+                pembayaran["jumlah"] = float(jumlah)
+                break
+            except ValueError:
+                print("Jumlah harus berupa angka.")
     
         while True:
-            status = input(f"Status Pembayaran [{pembayaran['status']}]: ").strip().lower()
+            status = input(f"Status Pembayaran [{pembayaran['status']}] ENTER jika tidak ingin diubah: ").strip().lower()
+            if not status:
+                break
             if status == "lunas" or status == "belum lunas":
                 pembayaran["status"] = status.capitalize()
                 break
@@ -205,8 +214,9 @@ def edit_pembayaran():
 
         print("Riwayat pembayaran berhasil diperbarui.")
         simpan_file_json("data_pembayaran.json", data_pembayaran)
+        tampilan_pembayaran_pengelola(user)
 
-def hapus_pembayaran():
+def hapus_pembayaran(user):
     print("\n=== Hapus Pembayaran ===\n")
 
     while True:
@@ -221,10 +231,14 @@ def hapus_pembayaran():
         print(f"\n--- Riwayat Pembayaran untuk Kamar {no_kamar} ---")
         for i, pembayaran in enumerate(data_pembayaran[no_kamar], start=1):
             print(f"{i}. Tanggal: {pembayaran['tanggal']}, Jumlah: {pembayaran['jumlah']}, Status: {pembayaran['status']}")
-        
+
         try:
-            pilihan = int(input("\nMasukkan nomor pembayaran yang ingin dihapus: ")) - 1
-            pembayaran = data_pembayaran[no_kamar].pop(pilihan)
+            pilihan = int(input("\nMasukkan nomor pembayaran yang ingin dihapus (mulai dari 1): "))
+            if pilihan < 1 or pilihan > len(data_pembayaran[no_kamar]):
+                print("Pilihan tidak valid.")
+                return
+            # Mengurangi 1 karena indeks di list mulai dari 0
+            pembayaran = data_pembayaran[no_kamar].pop(pilihan - 1)
         except (ValueError, IndexError):
             print("Pilihan tidak valid.")
             return

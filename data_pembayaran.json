@@ -2,15 +2,9 @@
     "005": [
         {
             "nama_penyewa": "asep",
-            "tanggal": "2021-02-10",
-            "jumlah": 9000000.0,
+            "tanggal": "2020-12-12",
+            "jumlah": "2000",
             "status": "Lunas"
-        },
-        {
-            "nama_penyewa": "asep",
-            "tanggal": "2022-11-11",
-            "jumlah": "30000",
-            "status": "Belum lunas"
         }
     ]
-} 
+}

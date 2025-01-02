@@ -5,15 +5,18 @@
     },
     {
         "username": "saya",
-        "password": "saya1"
+        "password": "saya1",
+        "room_id": null
     },
     {
         "username": "aku",
-        "password": "aku1"
+        "password": "aku1",
+        "room_id": null
     },
     {
         "username": "dia",
-        "password": "dia1"
+        "password": "dia1",
+        "room_id": null
     },
     {
         "username": "marwa",
