@@ -136,16 +136,17 @@
     },
     {
         "id": "010",
-        "penyewa": "rewaa",
-        "telepon": 825436252671,
-        "alamat": "jakarta",
-        "harga": 265436237,
+        "penyewa": "gea",
+        "telepon": 6554423,
+        "alamat": "garaa",
+        "harga": 7654434,
         "status": "Terisi",
         "fasilitas": [
             "kasur mahal",
-            "lemari"
+            "lemari",
+            "mucikari"
         ],
-        "tanggal_mulai": "2009-12-31",
-        "tanggal_akhir": "2010-12-31"
+        "tanggal_mulai": "2020-12-31",
+        "tanggal_akhir": "2021-12-31"
     }
 ]
