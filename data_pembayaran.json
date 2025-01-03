@@ -61,6 +61,12 @@
             "tanggal": "2020-03-02",
             "jumlah": "90",
             "status": "Belum lunas"
+        },
+        {
+            "nama_penyewa": "acep",
+            "tanggal": "2020-10-10",
+            "jumlah": 90.0,
+            "status": "Lunas"
         }
     ],
     "009": [

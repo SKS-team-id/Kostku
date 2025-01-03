@@ -374,7 +374,7 @@ def kelola_fasilitas_kamar(kamar):
     while True:
         if pilihan == "1":
             fasilitas_baru = input("Masukkan fasilitas baru (pisahkan dengan koma untuk lebih dari satu) atau ENTER untuk kembali: ").strip()
-            if not all(char.isalpha() or char == ',' for char in fasilitas_baru):
+            if not all(char.isalpha() or char.isspace() or char == ',' for char in fasilitas_baru):
                 print("Fasilitas hanya boleh diisi huruf.")
                 continue
             if all(char.isspace() for char in fasilitas_baru):
@@ -384,6 +384,7 @@ def kelola_fasilitas_kamar(kamar):
             kamar["fasilitas"].extend(fasilitas_baru.split(", "))
             print("Fasilitas berhasil ditambahkan.")
             simpan_ke_json()
+            kelola_fasilitas_kamar(kamar)
             break
         elif pilihan == "2":
             edit_fasilitas_kamar(kamar)

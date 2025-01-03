@@ -136,29 +136,17 @@
     },
     {
         "id": "010",
-        "penyewa": "alpin",
-        "telepon": 887634254325,
-        "alamat": "73654",
-        "harga": 823664563,
+        "penyewa": "gea",
+        "telepon": 6554423,
+        "alamat": "garaa",
+        "harga": 7654434,
         "status": "Terisi",
         "fasilitas": [
             "kasur mahal",
-            "lemari"
+            "lemari",
+            "mucikari"
         ],
-        "tanggal_mulai": "2013-12-31",
-        "tanggal_akhir": "2014-12-31"
-    },
-    {
-        "id": "120",
-        "penyewa": "agung",
-        "telepon": 38476756439,
-        "alamat": "arab",
-        "harga": 287236345,
-        "status": "Terisi",
-        "fasilitas": [
-            "Ibu, Ayah, Lemari"
-        ],
-        "tanggal_mulai": "2009-12-31",
-        "tanggal_akhir": "2010-12-31"
+        "tanggal_mulai": "2020-12-31",
+        "tanggal_akhir": "2021-12-31"
     }
 ]
