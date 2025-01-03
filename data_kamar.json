@@ -50,7 +50,7 @@
         "telepon": "",
         "alamat": "",
         "harga": 0,
-        "status": "Kosong",
+        "status": "Dipilih",
         "fasilitas": [
             "Kasur",
             "lemari",
@@ -136,30 +136,16 @@
     },
     {
         "id": "010",
-        "penyewa": "",
-        "telepon": "",
-        "alamat": "",
-        "harga": 0,
-        "status": "Kosong",
-        "fasilitas": [
-            "Kasur",
-            "lemari",
-            "meja"
-        ],
-        "tanggal_mulai": "",
-        "tanggal_akhir": ""
-    },
-    {
-        "id": "011",
-        "penyewa": "agus",
-        "telepon": 7867645434578,
-        "alamat": "jl.juanda",
-        "harga": 234333222,
+        "penyewa": "rewaa",
+        "telepon": 825436252671,
+        "alamat": "jakarta",
+        "harga": 265436237,
         "status": "Terisi",
         "fasilitas": [
-            "buku,kulkas,pintu"
+            "kasur mahal",
+            "lemari"
         ],
-        "tanggal_mulai": "2009-12-23",
-        "tanggal_akhir": "2010-12-23"
+        "tanggal_mulai": "2009-12-31",
+        "tanggal_akhir": "2010-12-31"
     }
 ]

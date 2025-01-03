@@ -158,6 +158,9 @@ def data_kamar_menu(user):
     for kamar in data_kamar:
         print(f"Kamar {kamar['id']} - Status: {kamar['status']}")
     kamar_id = input("Masukkan ID kamar untuk melihat detail atau tekan Enter untuk kembali: ")
+    if not kamar_id:
+        tampilkan_menu_pengelola(user)
+        return
     for kamar in data_kamar:
         if kamar["id"] == kamar_id:
             while True:
@@ -371,18 +374,20 @@ def kelola_fasilitas_kamar(kamar):
     while True:
         if pilihan == "1":
             fasilitas_baru = input("Masukkan fasilitas baru (pisahkan dengan koma untuk lebih dari satu) atau ENTER untuk kembali: ").strip()
-            if not all(char.isalpha() or char.isspace() or char == ',' for char in fasilitas_baru):
+            if not all(char.isalpha() or char == ',' for char in fasilitas_baru):
                 print("Fasilitas hanya boleh diisi huruf.")
                 continue
+            if all(char.isspace() for char in fasilitas_baru):
+                print("kembali ke menu fasilitas")
+                kelola_fasilitas_kamar(kamar)
+                break
             kamar["fasilitas"].extend(fasilitas_baru.split(", "))
             print("Fasilitas berhasil ditambahkan.")
             simpan_ke_json()
             break
-        
-    while True:
-        if pilihan == "2":
+        elif pilihan == "2":
             edit_fasilitas_kamar(kamar)
-        if pilihan == "3":
+        elif pilihan == "3":
             hapus_fasilitas_kamar(kamar)
         elif pilihan == "4":
             data_kamar_menu(kamar)
