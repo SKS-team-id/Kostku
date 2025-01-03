@@ -1,0 +1,36 @@
+[
+    {
+        "username": "admin",
+        "password": "admin1"
+    },
+    {
+        "username": "saya",
+        "password": "saya1",
+        "room_id": "007"
+    },
+    {
+        "username": "aku",
+        "password": "aku1",
+        "room_id": "003"
+    },
+    {
+        "username": "dia",
+        "password": "dia1",
+        "room_id": "006"
+    },
+    {
+        "username": "marwa",
+        "password": "marwa1",
+        "room_id": "003"
+    },
+    {
+        "username": "nipi",
+        "password": "nipiaja",
+        "room_id": "004"
+    },
+    {
+        "username": "nugi",
+        "password": "nugi1",
+        "room_id": null
+    }
+]
