@@ -60,7 +60,7 @@ def tampilkan_menu_pengelola(user):
         elif pilih == "5":
             from menu import main
             print("Anda keluar dari role pengelola")
-            main()  # Kembali ke menu utama
+            main()
             
             break
         else:
@@ -115,7 +115,7 @@ def tambah_kamar(user):
             print("Nomor kamar sudah ada.")
             return
         data_kamar.append({"id": kamar_baru, "penyewa": "", "telepon": "", "alamat": "", "harga": 0, "status": "Kosong", "fasilitas": []})
-        data_kamar.sort(key=lambda x: int(x['id'])) # Sort kamar by ID
+        data_kamar.sort(key=lambda x: int(x['id']))
         print(f"Kamar {kamar_baru} berhasil ditambahkan.")
         simpan_ke_json()
         break
@@ -192,9 +192,13 @@ def data_kamar_menu(user):
 
 def input_data_kamar(kamar):
     print(f"\n--- Input Data Kamar {kamar['id']} ---")
+    print("Setiap inputan tidak boleh kosong!")
 
     while True:
-        penyewa = input("Masukkan nama penyewa: ")
+        penyewa = input("Masukkan nama penyewa: ").strip()
+        if not penyewa:
+            print("Inputan tidak boleh kosong!")
+            continue
         if all(char.isalpha() or char.isspace() for char in penyewa):
             kamar["penyewa"] = penyewa
             break
@@ -202,7 +206,10 @@ def input_data_kamar(kamar):
             print("Nama penyewa hanya boleh diisi huruf.")
 
     while True:
-        telepon = input("Masukkan nomor telepon penyewa: ")
+        telepon = input("Masukkan nomor telepon penyewa: ").strip()
+        if not telepon:
+            print("Inputan tidak boleh kosong!")
+            continue
         if telepon.isdigit():
             kamar["telepon"] = int(telepon)
             break
@@ -210,46 +217,58 @@ def input_data_kamar(kamar):
             print("Nomor telepon hanya boleh mengandung angka.")
 
     while True:
-        alamat = input("Masukkan alamat penyewa: ")
-        if alamat :
-            kamar["alamat"] = alamat
-            break
-        else:
-            print("Alamat tidak boleh mengandung simbol.")
+        alamat = input("Masukkan alamat penyewa: ").strip()
+        if not alamat:
+            print("Inputan tidak boleh kosong!")
+            continue
+        kamar["alamat"] = alamat
+        break
 
     while True:
-        harga = input("Masukkan harga kamar: ")
+        harga = input("Masukkan harga kamar: ").strip()
+        if not harga:
+            print("Inputan tidak boleh kosong!")
+            continue
         if harga.isdigit():
             kamar["harga"] = int(harga)
             break
         else:
             print("Harga harus berupa angka.")
+    while True:
+        tanggal_mulai = input("Masukkan tanggal mulai sewa (YYYY-MM-DD): ").strip()
+        if not tanggal_mulai:
+            print("Inputan tidak boleh kosong!")
+            continue
+        if not validate_date(tanggal_mulai):
+            print("Format tanggal tidak valid! Gunakan format YYYY-MM-DD")
+            continue
+        kamar["tanggal_mulai"] = tanggal_mulai
+        break
 
     while True:
-        tanggal_mulai = input("Masukkan tanggal mulai sewa (YYYY-MM-DD): ")
-        if validate_date(tanggal_mulai):
-            kamar["tanggal_mulai"] = tanggal_mulai
-            break
-        else:
-            print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD.")
-
-    while True:
-        tanggal_akhir = input("Masukkan tanggal berakhir sewa (YYYY-MM-DD): ")
-        if validate_date(tanggal_akhir):
-            kamar["tanggal_akhir"] = tanggal_akhir
-            break
-        else:
-            print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD.")
-
-    while True:
-        status = input("Masukkan status kamar (True untuk Terisi): ").capitalize()
-        if status == "True":
-            kamar["status"] = "Terisi"
-            print(f"Data kamar {kamar['id']} berhasil diinput.")
-            simpan_ke_json()
-            break
-        else:
-            print("Status tidak valid. Hanya bisa mengisi status dengan True.")
+        tanggal_akhir = input("Masukkan tanggal berakhir sewa (YYYY-MM-DD): ").strip()
+        if not tanggal_akhir:
+            print("Inputan tidak boleh kosong!")
+            continue
+        if not validate_date(tanggal_akhir):
+            print("Format tanggal tidak valid! Gunakan format YYYY-MM-DD")
+            continue
+        
+        tgl_mulai = [int(x) for x in tanggal_mulai.split('-')]
+        tgl_akhir = [int(x) for x in tanggal_akhir.split('-')]
+        
+        if tgl_akhir[0] < tgl_mulai[0] or \
+        (tgl_akhir[0] == tgl_mulai[0] and tgl_akhir[1] < tgl_mulai[1]) or \
+        (tgl_akhir[0] == tgl_mulai[0] and tgl_akhir[1] == tgl_mulai[1] and tgl_akhir[2] <= tgl_mulai[2]):
+            print("Tanggal akhir harus setelah tanggal mulai!")
+            continue
+            
+        kamar["tanggal_akhir"] = tanggal_akhir
+        break
+    
+    kamar["status"] = "Terisi"
+    print(f"Data kamar {kamar['id']} berhasil diinput.")
+    simpan_ke_json()
 
 def edit_data_kamar(kamar):
     print(f"\n--- Edit Data Kamar {kamar['id']} ---")
@@ -273,13 +292,10 @@ def edit_data_kamar(kamar):
         print("Nomor telepon hanya boleh mengandung angka.")
 
     while True:
-        alamat = input(f"Alamat [{kamar['alamat']}] (ENTER jika tidak diubah): ").strip()
-        if not alamat:
-            break
-        if all(char.isalnum() or char.isspace() for char in alamat):
-            kamar["alamat"] = alamat
-            break
-        print("Alamat tidak boleh mengandung simbol.")
+        alamat_baru = input(f"Masukkan alamat penyewa[{kamar['alamat']}] (ENTER jika tidak diubah): ").strip()
+        if alamat_baru:
+            kamar["alamat"] = alamat_baru
+        break
 
     while True:
         harga = input(f"Harga kamar [{kamar['harga']}] (ENTER jika tidak diubah): ").strip()
@@ -340,8 +356,7 @@ def lihat_data_kamar(kamar):
     print(f"Tanggal Mulai Sewa: {kamar['tanggal_mulai'] if 'tanggal_mulai' in kamar and kamar['tanggal_mulai'] else 'Belum ditentukan'}")
     print(f"Tanggal Akhir Sewa: {kamar['tanggal_akhir'] if 'tanggal_akhir' in kamar and kamar['tanggal_akhir'] else 'Belum ditentukan'}")
     print(f"Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada fasilitas'}")
-    tampilkan_menu_pengelola()
-    tampilkan_menu_pengelola()
+    tampilkan_menu_pengelola(kamar)
 
 def kelola_fasilitas_kamar(kamar):
     print(f"\n--- Kelola Fasilitas Kamar {kamar['id']} ---")
@@ -353,23 +368,27 @@ def kelola_fasilitas_kamar(kamar):
 
     pilihan = input("Pilih menu: ").strip()
 
-    if pilihan == "1":
-        fasilitas_baru = input("Masukkan fasilitas baru (pisahkan dengan koma untuk lebih dari satu) atau ENTER untuk kembali: ").strip()
-
-        kamar["fasilitas"].extend(fasilitas_baru.split(", "))
-        print("Fasilitas berhasil ditambahkan.")
-        simpan_ke_json()
-        kelola_fasilitas_kamar(kamar)
-        return
-    elif pilihan == "2":
-        edit_fasilitas_kamar(kamar)
-    if pilihan == "3":
-        hapus_fasilitas_kamar(kamar)
-    elif pilihan == "4":
-        data_kamar_menu()
-    else:
-        print("Pilihan tidak valid atau kosong.")
-        kelola_fasilitas_kamar(kamar)
+    while True:
+        if pilihan == "1":
+            fasilitas_baru = input("Masukkan fasilitas baru (pisahkan dengan koma untuk lebih dari satu) atau ENTER untuk kembali: ").strip()
+            if not all(char.isalpha() or char.isspace() or char == ',' for char in fasilitas_baru):
+                print("Fasilitas hanya boleh diisi huruf.")
+                continue
+            kamar["fasilitas"].extend(fasilitas_baru.split(", "))
+            print("Fasilitas berhasil ditambahkan.")
+            simpan_ke_json()
+            break
+        
+    while True:
+        if pilihan == "2":
+            edit_fasilitas_kamar(kamar)
+        if pilihan == "3":
+            hapus_fasilitas_kamar(kamar)
+        elif pilihan == "4":
+            data_kamar_menu(kamar)
+        else:
+            print("Pilihan tidak valid atau kosong.")
+            kelola_fasilitas_kamar(kamar)
 
 def hapus_fasilitas_kamar(kamar):
     if not kamar["fasilitas"]:
@@ -452,13 +471,11 @@ def lihat_data_kamar_penyewa(user):
 def pilih_kamar_penyewa(user):
     print("\n--- Pilih Kamar ---")
     
-    # Periksa apakah penyewa sudah memiliki kamar
     if "room_id" in user and user["room_id"]:
         print(f"Anda sudah memilih kamar dengan ID {user['room_id']}. Anda tidak dapat memilih kamar lagi.")
         tampilkan_menu_penyewa(user)
         return
     
-    # Tampilkan daftar kamar kosong
     ada_kamar_kosong = False
     for kamar in data_kamar:
         if kamar['status'] == 'Kosong':
@@ -470,13 +487,11 @@ def pilih_kamar_penyewa(user):
         tampilkan_menu_penyewa(user)
         return
     
-    # Input pilihan kamar
     kamar_id = input("Masukkan ID kamar yang ingin dipilih atau tekan ENTER untuk kembali: ")
     if not kamar_id:
         tampilkan_menu_penyewa(user)
         return
     
-    # Periksa apakah kamar tersedia
     kamar_ditemukan = False
     for kamar in data_kamar:
         if kamar["id"] == kamar_id:
@@ -501,40 +516,3 @@ def pilih_kamar_penyewa(user):
     if not kamar_ditemukan:
         print("Maaf, kamar yang Anda pilih tidak ada. Silakan pilih kamar yang ada.")
         tampilkan_menu_penyewa(user)
-
-
-# def pilih_kamar_penyewa(user):
-#     print("\n--- Pilih Kamar ---")
-#     ada_kamar_kosong = False
-#     for kamar in data_kamar:
-#         if kamar['status'] == 'Kosong':
-#             ada_kamar_kosong = True
-#             print(f"Kamar {kamar['id']:<5} | Status: {kamar['status']:<10} | Harga: Rp{kamar['harga']:<10} | Fasilitas: {', '.join(kamar['fasilitas']) if kamar['fasilitas'] else 'Tidak ada'}")
-    
-#     if not ada_kamar_kosong:
-#         print("Tidak ada kamar kosong saat ini.")
-#         tampilkan_menu_penyewa(user)
-#         return
-    
-#     kamar_id = input("Masukkan ID kamar yang ingin dipilih atau tekan ENTER untuk kembali: ")
-#     kamar_ditemukan = False
-#     for kamar in data_kamar:
-#         if kamar["id"] == kamar_id:
-#             kamar_ditemukan = True
-#             if kamar["status"] == "Kosong":
-#                 kamar["status"] = "Dipilih"
-#                 user["room_id"] = kamar_id
-#                 print(f"Kamar {kamar_id} berhasil dipilih. Silakan melanjutkan proses dengan pengelola.")
-#                 simpan_ke_json()
-#                 simpan_users(load_users())
-#                 tampilkan_menu_penyewa(user)
-#             elif kamar["status"] == "Dipilih":
-#                 print(f"Kamar {kamar_id} sudah dalam status 'Dipilih'. Anda dapat melanjutkan proses dengan pengelola.")
-#             else:
-#                 print("Maaf, kamar ini sudah terisi.")
-#             break
-    
-#     if not kamar_ditemukan:
-#         print("Maaf, kamar yang Anda pilih tidak ada. Silakan pilih kamar yang ada.")
-#         tampilkan_menu_penyewa(user)
-        

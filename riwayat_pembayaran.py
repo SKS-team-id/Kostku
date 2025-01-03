@@ -35,7 +35,7 @@ def tampilan_pembayaran_pengelola(user):
         elif pilih == "3":
             hapus_pembayaran(user)
         elif pilih == "4":
-            lihat_riwayat_pembayaran(user)
+            lihat_riwayat_pembayaran_pengelola(user)
         elif pilih == "5":
             print("Anda keluar dari role pengelola.")
             from manajemen_kamar_kost import tampilkan_menu_pengelola
@@ -88,18 +88,16 @@ def input_pembayaran(user):
             tampilan_pembayaran_pengelola(user)
             return
             
-        # Initialize payment history for new room
         if no_kamar not in data_pembayaran:
             data_pembayaran[no_kamar] = []
         
-        # Payment details
         nama_penyewa = kamar["penyewa"]
 
         while True:
-            tanggal = input("Tanggal Pembayaran (YYYY-MM-DD): ")   #verifikasi format tanggal
+            tanggal = input("Tanggal Pembayaran (YYYY-MM-DD): ")
             try:
                 datetime.strptime(tanggal, "%Y-%m-%d")
-                break #tanggal valid, keluar dari loop
+                break
             except ValueError:
                 print("Format tanggal tidak valid. Harap masukkan dalam format YYYY-MM-DD.")
         
@@ -120,7 +118,6 @@ def input_pembayaran(user):
                 break
             print("Status harus 'Lunas' atau 'Belum Lunas' dan tidak boleh kosong. Silakan coba lagi.")
 
-        # Add payment record
         pembayaran_baru = {
             "nama_penyewa": nama_penyewa,
             "tanggal": tanggal,
@@ -137,24 +134,19 @@ def input_pembayaran(user):
         simpan_file_json("data_pembayaran.json", data_pembayaran)
         break
 
-def lihat_riwayat_pembayaran(user):
-    print("\n=== Riwayat Pembayaran ===\n")
-    
-    # Periksa apakah pengguna sudah memiliki kamar
-    if "room_id" in user and user["room_id"]:
-        no_kamar = user["room_id"]  # Langsung gunakan kamar yang dipilih pengguna
-        print(f"Anda telah memilih kamar nomor {no_kamar}. Menampilkan riwayat pembayaran untuk kamar ini...\n")
-    else:
-        print("Anda belum memilih kamar. Tidak dapat melihat riwayat pembayaran.")
+def lihat_riwayat_pembayaran_pengelola(user):
+    print("\n=== Riwayat Pembayaran ===")
+    no_kamar = input("Masukkan Nomor Kamar: ")
+
+    if not no_kamar.isdigit():
+        print("Nomor kamar harus berupa angka dan tidak boleh kosong.")
         return
     
-    # Cek apakah ada riwayat pembayaran untuk kamar tersebut
     if no_kamar not in data_pembayaran:
-        print(f"Belum ada riwayat pembayaran untuk kamar nomor {no_kamar}.")
+        print("Belum ada riwayat pembayaran untuk kamar ini.")
         return
-    
-    # Tampilkan riwayat pembayaran kamar
-    print(f"Riwayat Pembayaran Kamar {no_kamar}:")
+        
+    print(f"\nRiwayat Pembayaran Kamar {no_kamar}:")
     for pembayaran in data_pembayaran[no_kamar]:
         print("\nDetail Pembayaran:")
         print(f"Tanggal: {pembayaran['tanggal']}")
@@ -162,29 +154,27 @@ def lihat_riwayat_pembayaran(user):
         print(f"Jumlah: Rp{pembayaran['jumlah']}")
         print(f"Status: {pembayaran['status']}")
 
-
-# def lihat_riwayat_pembayaran(user):
-#     print("\n=== Riwayat Pembayaran ===\n")
+def lihat_riwayat_pembayaran(user):
+    print("\n=== Riwayat Pembayaran ===\n")
     
-#     while True:
-#         no_kamar = input("Masukkan Nomor Kamar: ")
-#         if not no_kamar.isdigit():
-#             print("Nomor kamar harus berupa angka dan tidak boleh kosong")
-#             return
-        
-#         if no_kamar not in data_pembayaran:
-#             print("Belum ada riwayat pembayaran untuk kamar ini.")
-#             return
-        
-#         print(f"\nRiwayat Pembayaran Kamar {no_kamar}:")
-#         for pembayaran in data_pembayaran[no_kamar]:
-#             if pembayaran['nama_penyewa'] == user:
-#                 print("\nDetail Pembayaran:")
-#                 print(f"Tanggal: {pembayaran['tanggal']}")
-#                 print(f"Penyewa: {pembayaran['nama_penyewa']}")
-#                 print(f"Jumlah: Rp{pembayaran['jumlah']}")
-#                 print(f"Status: {pembayaran['status']}")
-#         break
+    if "room_id" in user and user["room_id"]:
+        no_kamar = user["room_id"]
+        print(f"Anda telah memilih kamar nomor {no_kamar}. Menampilkan riwayat pembayaran untuk kamar ini...\n")
+    else:
+        print("Anda belum memilih kamar. Tidak dapat melihat riwayat pembayaran.")
+        return
+    
+    if no_kamar not in data_pembayaran:
+        print(f"Belum ada riwayat pembayaran untuk kamar nomor {no_kamar}.")
+        return
+
+    print(f"Riwayat Pembayaran Kamar {no_kamar}:")
+    for pembayaran in data_pembayaran[no_kamar]:
+        print("\nDetail Pembayaran:")
+        print(f"Tanggal: {pembayaran['tanggal']}")
+        print(f"Penyewa: {pembayaran['nama_penyewa']}")
+        print(f"Jumlah: Rp{pembayaran['jumlah']}")
+        print(f"Status: {pembayaran['status']}")
 
 def edit_pembayaran(user):
     print("\n=== Edit Pembayaran ===\n")
@@ -264,7 +254,6 @@ def hapus_pembayaran(user):
             if pilihan < 1 or pilihan > len(data_pembayaran[no_kamar]):
                 print("Pilihan tidak valid.")
                 return
-            # Mengurangi 1 karena indeks di list mulai dari 0
             pembayaran = data_pembayaran[no_kamar].pop(pilihan - 1)
         except (ValueError, IndexError):
             print("Pilihan tidak valid.")

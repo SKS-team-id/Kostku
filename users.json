@@ -11,7 +11,7 @@
     {
         "username": "aku",
         "password": "aku1",
-        "room_id": null
+        "room_id": "003"
     },
     {
         "username": "dia",
@@ -21,6 +21,11 @@
     {
         "username": "marwa",
         "password": "marwa1",
-        "room_id": null
+        "room_id": "003"
+    },
+    {
+        "username": "nipi",
+        "password": "nipiaja",
+        "room_id": "004"
     }
 ]

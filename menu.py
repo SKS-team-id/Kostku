@@ -50,10 +50,10 @@ def login():
                     print(f"Login berhasil! Selamat datang, {username}!")
                     if user['username'] == "admin":
                         print("Anda login sebagai pengelola.")
-                        tampilkan_menu_pengelola(user)  # Pass the user to the function
+                        tampilkan_menu_pengelola(user) 
                     else:
                         print("Anda login sebagai penyewa.")
-                        tampilkan_menu_penyewa(user)  # Pass the user to the function
+                        tampilkan_menu_penyewa(user) 
                     return user
         
         
@@ -69,8 +69,11 @@ def register():
     
     while True:
         username = input("Masukkan username baru: ")
+        if not username:
+            print("Username masih kosong, silakan coba lagi!")
+            continue
         if not username.isalpha():
-            print("username hanya boleh diisi huruf dan tidak kosong")
+            print("Username hanya boleh diisi huruf.")
             continue
         if any(user["username"] == username for user in users):
             print("Username sudah digunakan, silakan coba username lain.")
@@ -109,7 +112,7 @@ def main():
         pilihan = input("Pilih (angka menu): ").strip()
         
         if not pilihan:
-            print("Pilihan masih kosong, silahkan pilih menu diatas!")
+            print("Pilihan masih kosong, silahkan pilih menu di atas!")
             continue
             
         if pilihan == '1':
@@ -117,17 +120,17 @@ def main():
             if user and user.get('username') == "admin":
                 result = tampilkan_menu_pengelola(user)
                 if result == "LOGOUT":
-                    continue  # Go back to login menu
+                    continue
             elif user:
                 result = tampilkan_menu_penyewa(user)
                 if result == "LOGOUT":
-                    continue  # Go back to login menu
+                    continue
         elif pilihan == '2':
             register()
         elif pilihan == '3':
             logout()
         else:
-            print("Pilihan tidak valid, silahkan pilih menu diatas!")
+            print("Pilihan tidak valid, silahkan pilih menu di atas!")
 
 if __name__ == "__main__":
     main()

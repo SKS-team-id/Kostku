@@ -5,6 +5,12 @@
             "tanggal": "2020-12-12",
             "jumlah": "2000",
             "status": "Lunas"
+        },
+        {
+            "nama_penyewa": "asep",
+            "tanggal": "2028-10-10",
+            "jumlah": "9000",
+            "status": "Lunas"
         }
     ],
     "001": [
