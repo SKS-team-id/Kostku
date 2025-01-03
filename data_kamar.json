@@ -1,112 +1,151 @@
 [
-  {
-    "id": "001",
-    "penyewa": "nugi",
-    "telepon": 131024816124,
-    "alamat": "",
-    "harga": 700000,
-    "status": "Terisi",
-    "fasilitas": ["Kasur", "lemari", "meja"],
-    "tanggal_mulai": "2025-01-10",
-    "tanggal_akhir": "2025-02-10"
-  },
-  {
-    "id": "002",
-    "penyewa": "aku",
-    "telepon": 912836192416,
-    "alamat": "jl. jauh banget 2",
-    "harga": 500000,
-    "status": "Terisi",
-    "fasilitas": ["Kasur", "lemari", "meja"],
-    "tanggal_mulai": "2025-02-01",
-    "tanggal_akhir": "2025-03-01"
-  },
-  {
-    "id": "003",
-    "penyewa": "Vina",
-    "telepon": 89789789,
-    "alamat": "Jl. Suci No. 90",
-    "harga": 90000,
-    "status": "Terisi",
-    "fasilitas": ["Kasur", "lemari", "meja"],
-    "tanggal_mulai": "2020-10-01",
-    "tanggal_akhir": "2021-01-01"
-  },
-  {
-    "id": "004",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Kosong",
-    "fasilitas": ["Kasur", "lemari", "meja"],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "005",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Kosong",
-    "fasilitas": ["Kasur", "lemari", "meja"],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "006",
-    "penyewa": "acep",
-    "telepon": 345678,
-    "alamat": "jl jalan 08",
-    "harga": 90,
-    "status": "Terisi",
-    "fasilitas": ["Kasur", "lemari", "meja"],
-    "tanggal_mulai": "2020-01-02",
-    "tanggal_akhir": "2020-03-02"
-  },
-  {
-    "id": "007",
-    "penyewa": "sina",
-    "telepon": 845678,
-    "alamat": "jl. anggur 1",
-    "harga": 80,
-    "status": "Terisi",
-    "fasilitas": ["Kasur", "lemari", "meja"],
-    "tanggal_mulai": "2020-01-01",
-    "tanggal_akhir": "2020-03-01"
-  },
-  {
-    "id": "008",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Dipilih",
-    "fasilitas": ["Kasur", "lemari", "meja"],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  },
-  {
-    "id": "009",
-    "penyewa": "kura",
-    "telepon": 84567,
-    "alamat": "jl. manggis 2",
-    "harga": 800,
-    "status": "Terisi",
-    "fasilitas": ["Kasur", "lemari", "meja"],
-    "tanggal_mulai": "2020-01-01",
-    "tanggal_akhir": "2020-03-01"
-  },
-  {
-    "id": "010",
-    "penyewa": "",
-    "telepon": "",
-    "alamat": "",
-    "harga": 0,
-    "status": "Kosong",
-    "fasilitas": ["Kasur", "lemari", "meja"],
-    "tanggal_mulai": "",
-    "tanggal_akhir": ""
-  }
+    {
+        "id": "001",
+        "penyewa": "nugi",
+        "telepon": 131024816124,
+        "alamat": "",
+        "harga": 700000,
+        "status": "Terisi",
+        "fasilitas": [
+            "Kasur",
+            "lemari",
+            "meja"
+        ],
+        "tanggal_mulai": "2025-01-10",
+        "tanggal_akhir": "2025-02-10"
+    },
+    {
+        "id": "002",
+        "penyewa": "aku",
+        "telepon": 912836192416,
+        "alamat": "jl. jauh banget 2",
+        "harga": 500000,
+        "status": "Terisi",
+        "fasilitas": [
+            "Kasur",
+            "lemari",
+            "meja"
+        ],
+        "tanggal_mulai": "2025-02-01",
+        "tanggal_akhir": "2025-03-01"
+    },
+    {
+        "id": "003",
+        "penyewa": "Vina",
+        "telepon": 89789789,
+        "alamat": "Jl. Suci No. 90",
+        "harga": 90000,
+        "status": "Terisi",
+        "fasilitas": [
+            "Kasur",
+            "lemari",
+            "meja"
+        ],
+        "tanggal_mulai": "2020-10-01",
+        "tanggal_akhir": "2021-01-01"
+    },
+    {
+        "id": "004",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Dipilih",
+        "fasilitas": [
+            "Kasur",
+            "lemari",
+            "meja"
+        ],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "005",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": [
+            "Kasur",
+            "lemari",
+            "meja"
+        ],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "006",
+        "penyewa": "acep",
+        "telepon": 345678,
+        "alamat": "jl jalan 08",
+        "harga": 90,
+        "status": "Terisi",
+        "fasilitas": [
+            "Kasur",
+            "lemari",
+            "meja"
+        ],
+        "tanggal_mulai": "2020-01-02",
+        "tanggal_akhir": "2020-03-02"
+    },
+    {
+        "id": "007",
+        "penyewa": "sina",
+        "telepon": 845678,
+        "alamat": "jl. anggur 1",
+        "harga": 80,
+        "status": "Terisi",
+        "fasilitas": [
+            "Kasur",
+            "lemari",
+            "meja"
+        ],
+        "tanggal_mulai": "2020-01-01",
+        "tanggal_akhir": "2020-03-01"
+    },
+    {
+        "id": "008",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Dipilih",
+        "fasilitas": [
+            "Kasur",
+            "lemari",
+            "meja"
+        ],
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "009",
+        "penyewa": "kura",
+        "telepon": 84567,
+        "alamat": "jl. manggis 2",
+        "harga": 800,
+        "status": "Terisi",
+        "fasilitas": [
+            "Kasur",
+            "lemari",
+            "meja"
+        ],
+        "tanggal_mulai": "2020-01-01",
+        "tanggal_akhir": "2020-03-01"
+    },
+    {
+        "id": "010",
+        "penyewa": "rewaa",
+        "telepon": 825436252671,
+        "alamat": "jakarta",
+        "harga": 265436237,
+        "status": "Terisi",
+        "fasilitas": [
+            "kasur mahal",
+            "lemari"
+        ],
+        "tanggal_mulai": "2009-12-31",
+        "tanggal_akhir": "2010-12-31"
+    }
 ]

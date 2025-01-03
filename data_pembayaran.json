@@ -19,6 +19,12 @@
             "tanggal": "2025-01-09",
             "jumlah": "700000",
             "status": "Lunas"
+        },
+        {
+            "nama_penyewa": "nugi",
+            "tanggal": "2024-2-2",
+            "jumlah": "700000",
+            "status": "Lunas"
         }
     ],
     "002": [
@@ -56,5 +62,14 @@
             "jumlah": "90",
             "status": "Belum lunas"
         }
-    ]
+    ],
+    "009": [
+        {
+            "nama_penyewa": "kura",
+            "tanggal": "2025-10-11",
+            "jumlah": "900000",
+            "status": "Lunas"
+        }
+    ],
+    "010": []
 }
