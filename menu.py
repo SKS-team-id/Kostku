@@ -28,7 +28,7 @@ def login():
             print("Username masih kosong, silakan coba lagi!")
             continue
         
-        password = input("Masukkan password: ")
+        password = input("Masukkan password: ") 
         if not password:
             print("Password masih kosong, silakan coba lagi!")
             continue
