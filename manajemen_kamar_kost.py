@@ -147,7 +147,7 @@ def hapus_kamar(user):
                     simpan_ke_json()
                 else:
                     print(f"Kamar {kamar_id} tidak dapat dihapus karena statusnya masih 'Terisi'.")
-                break
+                return
     
         if not kamar_ditemukan:
             print("Kamar tidak ditemukan.")
