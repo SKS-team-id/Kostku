@@ -1,48 +1,48 @@
 [
     {
         "id": "001",
-        "penyewa": "nugi",
-        "telepon": 131024816124,
+        "penyewa": "",
+        "telepon": "",
         "alamat": "",
-        "harga": 700000,
-        "status": "Terisi",
+        "harga": 0,
+        "status": "Dipilih",
         "fasilitas": [
             "Kasur",
             "lemari",
             "meja"
         ],
-        "tanggal_mulai": "2025-01-10",
-        "tanggal_akhir": "2025-02-10"
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
     },
     {
         "id": "002",
-        "penyewa": "aku",
-        "telepon": 912836192416,
-        "alamat": "jl. jauh banget 2",
-        "harga": 500000,
-        "status": "Terisi",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
         "fasilitas": [
             "Kasur",
             "lemari",
             "meja"
         ],
-        "tanggal_mulai": "2025-02-01",
-        "tanggal_akhir": "2025-03-01"
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
     },
     {
         "id": "003",
-        "penyewa": "Vina",
-        "telepon": 89789789,
-        "alamat": "Jl. Suci No. 90",
-        "harga": 90000,
-        "status": "Terisi",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
         "fasilitas": [
             "Kasur",
             "lemari",
             "meja"
         ],
-        "tanggal_mulai": "2020-10-01",
-        "tanggal_akhir": "2021-01-01"
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
     },
     {
         "id": "004",
@@ -50,7 +50,7 @@
         "telepon": "",
         "alamat": "",
         "harga": 0,
-        "status": "Dipilih",
+        "status": "Kosong",
         "fasilitas": [
             "Kasur",
             "lemari",
@@ -110,7 +110,7 @@
         "telepon": "",
         "alamat": "",
         "harga": 0,
-        "status": "Dipilih",
+        "status": "Kosong",
         "fasilitas": [
             "Kasur",
             "lemari",
@@ -121,34 +121,41 @@
     },
     {
         "id": "009",
-        "penyewa": "kura",
-        "telepon": 84567,
-        "alamat": "jl. manggis 2",
-        "harga": 800,
-        "status": "Terisi",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
         "fasilitas": [
             "Kasur",
             "lemari",
             "meja"
         ],
-        "tanggal_mulai": "2020-01-01",
-        "tanggal_akhir": "2020-03-01"
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
     },
     {
         "id": "010",
-        "penyewa": "gea",
-        "telepon": 6554423,
-        "alamat": "garaa",
-        "harga": 7654434,
-        "status": "Terisi",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
         "fasilitas": [
-            "kasur mahal",
+            "kasur",
             "lemari",
-            "mucikari",
-            "kucing",
-            "nyamuk"
+            "galon"
         ],
-        "tanggal_mulai": "2020-12-31",
-        "tanggal_akhir": "2021-12-31"
+        "tanggal_mulai": "",
+        "tanggal_akhir": ""
+    },
+    {
+        "id": "011",
+        "penyewa": "",
+        "telepon": "",
+        "alamat": "",
+        "harga": 0,
+        "status": "Kosong",
+        "fasilitas": []
     }
 ]

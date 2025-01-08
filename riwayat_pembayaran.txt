@@ -1,0 +1,23 @@
+Struk Pembayaran Kamar 007
+==============================
+
+Detail Pembayaran:
+Tanggal: 2020-01-01
+Penyewa: sina
+Jumlah: Rp80
+Status: Lunas
+==============================
+
+Detail Pembayaran:
+Tanggal: 2020-03-01
+Penyewa: sina
+Jumlah: Rp80
+Status: Belum lunas
+==============================
+
+Detail Pembayaran:
+Tanggal: 2025-01-10
+Penyewa: sina
+Jumlah: Rp900
+Status: Lunas
+==============================

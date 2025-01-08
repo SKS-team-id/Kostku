@@ -11,7 +11,7 @@
     {
         "username": "aku",
         "password": "aku1",
-        "room_id": "003"
+        "room_id": null
     },
     {
         "username": "dia",
@@ -19,14 +19,9 @@
         "room_id": "006"
     },
     {
-        "username": "marwa",
-        "password": "marwa1",
-        "room_id": "003"
-    },
-    {
         "username": "nipi",
         "password": "nipiaja",
-        "room_id": "004"
+        "room_id": null
     },
     {
         "username": "nugi",
@@ -36,6 +31,16 @@
     {
         "username": "Nugaaaa",
         "password": "Nugeeee123#",
-        "room_id": "004"
+        "room_id": null
+    },
+    {
+        "username": "bambang",
+        "password": "bambang1",
+        "room_id": null
+    },
+    {
+        "username": "ahmad",
+        "password": "ahmad1",
+        "room_id": "001"
     }
 ]

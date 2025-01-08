@@ -13,6 +13,19 @@ def simpan_file_json(nama_file, data):
         json.dump(data, file, indent=4)
     print(f"Data berhasil disimpan ke {nama_file}.")
 
+def simpan_pembayaran_txt(nama_file, data_pembayaran, no_kamar):
+    with open(nama_file, "w") as file:
+        file.write(f"Struk Pembayaran Kamar {no_kamar}\n")
+        file.write("="*30 + "\n")
+        for pembayaran in data_pembayaran[no_kamar]:
+            file.write("\nDetail Pembayaran:\n")
+            file.write(f"Tanggal: {pembayaran['tanggal']}\n")
+            file.write(f"Penyewa: {pembayaran['nama_penyewa']}\n")
+            file.write(f"Jumlah: Rp{pembayaran['jumlah']}\n")
+            file.write(f"Status: {pembayaran['status']}\n")
+            file.write("="*30 + "\n")
+    print(f"Struk pembayaran berhasil disimpan ke {nama_file}.")
+
 data_kamar = baca_file_json("data_kamar.json", [])
 data_pembayaran = baca_file_json("data_pembayaran.json", {})
 
@@ -175,6 +188,7 @@ def lihat_riwayat_pembayaran(user):
         print(f"Penyewa: {pembayaran['nama_penyewa']}")
         print(f"Jumlah: Rp{pembayaran['jumlah']}")
         print(f"Status: {pembayaran['status']}")
+        simpan_pembayaran_txt("riwayat_pembayaran.txt", data_pembayaran, no_kamar)
 
 def edit_pembayaran(user):
     print("\n=== Edit Pembayaran ===\n")

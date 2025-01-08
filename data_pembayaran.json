@@ -47,6 +47,12 @@
             "tanggal": "2020-03-01",
             "jumlah": "80",
             "status": "Belum lunas"
+        },
+        {
+            "nama_penyewa": "sina",
+            "tanggal": "2025-01-10",
+            "jumlah": "900",
+            "status": "Lunas"
         }
     ],
     "006": [
